@@ -1,9 +1,11 @@
 const router = require("express").Router();
-const { Robot } = require("../db/index");
+const { Robot, Project } = require("../db/index");
 
 router.get("/", async (req, res, next) => {
   try {
-    const robots = await Robot.findAll();
+    const robots = await Robot.findAll({
+      include: {model: Project}
+    });
     res.json(robots);
   } catch (err) {
     next(err);

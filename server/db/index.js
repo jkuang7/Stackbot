@@ -14,6 +14,10 @@ const Robot = require("./robot");
 Robot.belongsToMany(Project, { through: "RobotProjects" });
 Project.belongsToMany(Robot, { through: "RobotProjects" });
 
+//Sequelize Magic Methods
+// console.log(Object.keys(Robot.prototype));
+// console.log(Object.keys(Project.prototype));
+
 module.exports = {
   // Include your models in this exports object as well!
   db,

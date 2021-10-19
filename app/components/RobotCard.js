@@ -9,8 +9,9 @@ class RobotCard extends React.Component {
         <img className = "robotCard__img" src={robot.imageUrl} alt="IMAGE"></img>
         <div className="robotCard__text">
           <h1>{robot.name}</h1>
-          <p>{robot.fuelType}</p>
-          <p>{robot.fuelLevel}</p>
+          <p>{`Projects: ${robot.projects.length}`}</p>
+          <p>{`Fuel Type: ${robot.fuelType}`}</p>
+          <p>{`Fuel Level: ${robot.fuelLevel}`}</p>
         </div>
       </div>
     );

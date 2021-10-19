@@ -5,16 +5,17 @@ let robots = [];
 let projects = [];
 
 //Helper Functions
-const randNum = (num) => {
+const randNum = (num, floor = true) => {
   //generates random num from [0, num)
-  return Math.floor(Math.random() * num);
+  if (floor) return Math.floor(Math.random() * num);
+  else return Math.random() * num;
 };
 
 const makeRobots = (arr, len) => {
   const fuelType = ["gas", "diesel", "electric"];
   for (let i = 0; i < len; i++) {
     const randomFuelType = randNum(fuelType.length);
-    const randomFuelLevel = randNum(101);
+    const randomFuelLevel = randNum(101, false);
     arr.push({
       name: `Robot ${i}`,
       fuelType: fuelType[randomFuelType],
@@ -48,15 +49,22 @@ const seed = async () => {
 
     await db.sync({ force: true });
     //seeding
-    await Promise.all(
+    const robotsInstances = await Promise.all(
       robots.map((robot) => {
         return Robot.create(robot);
       })
     );
 
-    await Promise.all(
+    const projectsInstances = await Promise.all(
       projects.map((project) => {
         return Project.create(project);
+      })
+    );
+
+    //Creating Join Relationships between Robots and Projects via Sequelize Magic Methods
+    await Promise.all(
+      robotsInstances.map((robot, idx) => {
+        return robot.addProject(projectsInstances[idx]);
       })
     );
   } catch (err) {

@@ -1,9 +1,10 @@
 import React from "react";
+import Navbar from "./Navbar";
 
 const HomePage = () => {
   return (
     <div>
-      <nav>Welcome!</nav>
+      <Navbar />
       <main>
         <h1>
           Welcome to StackBot Project Management: your robot employees are

@@ -10,7 +10,6 @@
 
 body {
   background: linear-gradient(#ffffff, #c0c0c0);
-  height: 100vh;
   padding: 0;
   margin: 0;
   width: 100vw;
@@ -30,9 +29,25 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 1.15rem;
+}
+
+.robots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .robotCard {
+  flex: 0 1 50%;
+  border: solid #5B6DCD 1px;
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+}
+
+.robotCard__img {
+  flex: 0 1 35%;
+}
+.robotCard__text {
+  flex: 0 1 65%;
 }

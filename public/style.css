@@ -39,15 +39,21 @@ main {
 }
 
 .robotCard {
+  padding: 0.5em;
   flex: 0 1 50%;
-  border: solid #5B6DCD 1px;
+  border: solid #5b6dcd 1px;
   display: flex;
   justify-content: space-between;
 }
 
 .robotCard__img {
-  flex: 0 1 35%;
+  flex: 0 1 30%;
 }
 .robotCard__text {
   flex: 0 1 65%;
+}
+
+.robotCard__text h1 {
+  margin-top: 0;
+  margin-bottom: 0.25em;
 }

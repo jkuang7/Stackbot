@@ -4,7 +4,6 @@ class ProjectCard extends React.Component {
   render() {
     let { project } = this.props;
     project = project || {};
-    console.log(project);
     return (
       <div className="projectCard">
         <h1 className="projectCard__header">{project.title}</h1>

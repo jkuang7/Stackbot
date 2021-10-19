@@ -12,7 +12,6 @@ export class AllProjects extends React.Component {
     this.props.fetchProjects();
   }
   render() {
-    console.log(this.props.projects);
     let { projects } = this.props;
     projects = projects || projects;
     return (

@@ -11,7 +11,6 @@ const Project = db.define("project", {
   },
   deadline: {
     type: Sequelize.DATE,
-    allowNull: false,
     validate: {
       notEmpty: true,
     },

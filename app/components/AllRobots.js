@@ -16,7 +16,6 @@ export class AllRobots extends React.Component {
   render() {
     let { robots } = this.props;
     robots = robots || [];
-    console.log(robots);
     return (
       <div>
         {robots.map((robot) => {

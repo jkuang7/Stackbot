@@ -32,7 +32,7 @@ main {
   justify-content: center;
 }
 
-/* div {
+.robotCard {
   display: flex;
-  align-items: center;
-} */
+  flex-direction: row;
+}

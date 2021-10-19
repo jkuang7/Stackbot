@@ -5,17 +5,23 @@ let robots = [];
 let projects = [];
 
 //Helper Functions
-const randNum = (num, floor = true) => {
+const randNum = (num, isDecimal = false) => {
   //generates random num from [0, num)
-  if (floor) return Math.floor(Math.random() * num);
-  else return Math.random() * num;
+  if (!isDecimal) {
+    return Math.floor(Math.random() * num);
+  } else {
+    //Returns Random Decimal inclusive [0,num]
+    const random =
+      Math.random() < 0.5 ? (1 - Math.random()) * num : Math.random() * num;
+    return parseFloat(random.toFixed(2));
+  }
 };
 
 const makeRobots = (arr, len) => {
   const fuelType = ["gas", "diesel", "electric"];
   for (let i = 0; i < len; i++) {
     const randomFuelType = randNum(fuelType.length);
-    const randomFuelLevel = randNum(101, false);
+    const randomFuelLevel = randNum(100, true);
     arr.push({
       name: `Robot ${i}`,
       fuelType: fuelType[randomFuelType],

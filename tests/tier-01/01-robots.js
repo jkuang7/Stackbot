@@ -51,7 +51,7 @@ describe('Tier One: Robots', () => {
     mockAxios.onGet('/api/robots').replyOnce(200, robots);
   });
 
-  describe('<AllRobots /> component', () => {
+  describe.only('<AllRobots /> component', () => {
     const getRobotsSpy = sinon.spy();
     afterEach(() => {
       getRobotsSpy.resetHistory();

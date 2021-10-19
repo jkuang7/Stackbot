@@ -27,6 +27,7 @@ const Robot = db.define("robot", {
   },
   imageUrl: {
     type: Sequelize.STRING,
+    defaultValue: "",
   },
 });
 

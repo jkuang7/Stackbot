@@ -31,3 +31,8 @@ main {
   flex-direction: column;
   justify-content: center;
 }
+
+/* div {
+  display: flex;
+  align-items: center;
+} */

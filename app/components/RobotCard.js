@@ -1,7 +1,10 @@
 import React from "react";
 
 class RobotCard extends React.Component {
-  render() {}
+  render() {
+    console.log(this.props);
+    return <div></div>;
+  }
 }
 
 export default RobotCard;

@@ -25,10 +25,10 @@ export const fetchRobots = () => {
 
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
-export default function robotsReducer(state = {}, action) {
+export default function robotsReducer(state = [], action) {
   switch (action.type) {
     case SET_ROBOTS:
-      return { ...state, robots: action.robots };
+      return [...action.robots];
     default:
       return state;
   }

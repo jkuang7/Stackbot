@@ -14,8 +14,16 @@ export class AllRobots extends React.Component {
     this.props.fetchRobots();
   }
   render() {
-    console.log(this.props.robots);
-    return <div></div>;
+    let { robots } = this.props;
+    robots = robots || [];
+    console.log(robots);
+    return (
+      <div>
+        {robots.map((robot) => {
+          return <RobotCard robot={robot} key={robot.id} />;
+        })}
+      </div>
+    );
   }
 }
 

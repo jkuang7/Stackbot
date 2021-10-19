@@ -1,19 +1,13 @@
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomePage from "./HomePage";
 
 const Routes = () => {
   return (
     <Router>
-      <div>
-        <nav>Welcome!</nav>
-        <main>
-          <h1>
-            Welcome to StackBot Project Management: your robot employees are
-            awaiting assignments!
-          </h1>
-          <p>This seems like a nice place to get started with some Routes!</p>
-        </main>
-      </div>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+      </Switch>
     </Router>
   );
 };

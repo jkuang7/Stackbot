@@ -21,6 +21,6 @@ Project.belongsToMany(Robot, { through: "RobotProjects" });
 module.exports = {
   // Include your models in this exports object as well!
   db,
-  Project,
   Robot,
+  Project
 };

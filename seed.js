@@ -1,29 +1,53 @@
 const { green, red } = require("chalk");
 const { db, Project, Robot } = require("./server/db");
 
-const robots = [
-  {
-    name: "Robot1",
-    fuelType: "electric",
-    fuelLevel: 100,
-    imageUrl: "",
-  },
-];
+let robots = [];
+let projects = [];
 
-const projects = [
-  {
-    title: "Pass classes",
-    deadline: Date.now(),
-    priority: 8,
-    description: "Full Stack Academy",
-  },
-];
+//Helper Functions
+const randNum = (num) => {
+  //generates random num from [0, num)
+  return Math.floor(Math.random() * num);
+};
+
+const makeRobots = (arr, len) => {
+  const fuelType = ["gas", "diesel", "electric"];
+  for (let i = 0; i < len; i++) {
+    const randomFuelType = randNum(fuelType.length);
+    const randomFuelLevel = randNum(101);
+    arr.push({
+      name: `Robot${i}`,
+      fuelType: fuelType[randomFuelType],
+      fuelLevel: randomFuelLevel,
+      imageUrl: "",
+    });
+  }
+  return arr;
+};
+
+const makeProjects = (arr, len) => {
+  const boolArr = [true, false];
+  for (let i = 0; i < len; i++) {
+    const randomCompleted = randNum(boolArr.length);
+    arr.push({
+      title: `Project${i}`,
+      deadline: Date.now(),
+      priority: randNum(10) + 1,
+      completed: boolArr[randomCompleted],
+      description: `Description for Project${i}`,
+    });
+  }
+  return arr;
+};
 
 const seed = async () => {
   try {
-    await db.sync({ force: true });
-    // seed your database here!
+    //Create Robots and Projects
+    robots = makeRobots(robots, 10);
+    projects = makeProjects(projects, 10);
 
+    await db.sync({ force: true });
+    //seeding
     await Promise.all(
       robots.map((robot) => {
         return Robot.create(robot);

@@ -4,6 +4,7 @@ class RobotCard extends React.Component {
   render() {
     let { robot } = this.props;
     robot = robot || {};
+    console.log(robot.imageUrl);
     return (
       <div className="robotCard">
         <img className = "robotCard__img" src={robot.imageUrl} alt="IMAGE"></img>

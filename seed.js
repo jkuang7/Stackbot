@@ -26,7 +26,6 @@ const makeRobots = (arr, len) => {
       name: `Robot ${i}`,
       fuelType: fuelType[randomFuelType],
       fuelLevel: randomFuelLevel,
-      imageUrl: "",
     });
   }
   return arr;

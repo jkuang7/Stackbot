@@ -49,6 +49,12 @@ h1 {
   margin-bottom: 0.25em;
 }
 
+img {
+  object-fit: cover;
+  width: 25%;
+  
+}
+
 .robots {
   display: flex;
   flex-wrap: wrap;

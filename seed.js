@@ -16,7 +16,7 @@ const makeRobots = (arr, len) => {
     const randomFuelType = randNum(fuelType.length);
     const randomFuelLevel = randNum(101);
     arr.push({
-      name: `Robot${i}`,
+      name: `Robot ${i}`,
       fuelType: fuelType[randomFuelType],
       fuelLevel: randomFuelLevel,
       imageUrl: "",
@@ -30,7 +30,7 @@ const makeProjects = (arr, len) => {
   for (let i = 0; i < len; i++) {
     const randomCompleted = randNum(boolArr.length);
     arr.push({
-      title: `Project${i}`,
+      title: `Project ${i}`,
       deadline: Date.now(),
       priority: randNum(10) + 1,
       completed: boolArr[randomCompleted],

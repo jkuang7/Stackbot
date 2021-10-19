@@ -12,6 +12,7 @@ body {
   background: linear-gradient(#ffffff, #c0c0c0);
   padding: 0;
   margin: 0;
+  height: 130vw;
   width: 100vw;
 }
 
@@ -43,6 +44,11 @@ main {
   margin: 1.15rem;
 }
 
+h1 {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
 .robots {
   display: flex;
   flex-wrap: wrap;
@@ -64,7 +70,17 @@ main {
   flex: 0 1 65%;
 }
 
-.robotCard__text h1 {
-  margin-top: 0;
-  margin-bottom: 0.25em;
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.projectCard {
+  padding: 0.5em;
+  flex: 0 1 50%;
+  border: solid #5b6dcd 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

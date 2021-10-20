@@ -18,8 +18,17 @@ router.get("/:id", async (req, res, next) => {
       where: {
         id: req.params.id,
       },
-      include: Project
+      include: Project,
     });
+    res.json(robot);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/:id", async (req, res, next) => {
+  try {
+    const robot = await Robot.create(req.body);
     res.json(robot);
   } catch (err) {
     next(err);

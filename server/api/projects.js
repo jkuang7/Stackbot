@@ -25,17 +25,18 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.get("/robot/:id", async (req, res, next) => {
+  //Gets the list of projects by robot id
   try {
     const robot = await Robot.findOne({
       where: {
-        id: req.params.id
+        id: req.params.id,
       },
-      include: Project
-    })
+      include: Project,
+    });
     res.json(robot.projects);
   } catch (err) {
     next(err);
   }
-})
+});
 
 module.exports = router;

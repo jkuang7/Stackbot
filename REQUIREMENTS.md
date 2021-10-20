@@ -55,7 +55,7 @@ Congrats! You have completed your first vertical slice! Make sure to `commit -m 
 
 - Write a component to display a single project with the following information:
   - [x] The project's title, deadline, priority, description
-  - [] A list of the names of all robots in that project (or a helpful message if it doesn't have any robots)
+  - [x] A list of the names of all robots in that project (or a helpful message if it doesn't have any robots)
 - [x] Display the appropriate project's info when the url matches `/projects/:projectId`
 - [x] Clicking on a project from the all-projects view should navigate to show that project in the single-project view
 

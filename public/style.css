@@ -58,7 +58,9 @@ img {
 
 .flex-container {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -91,7 +93,6 @@ img {
 .projectCard {
   display: flex;
   flex-direction: column;
-  flex: 0 1 45%;
   border: solid #5b6dcd 3px;
   padding: 1.25rem;
 }
@@ -99,7 +100,6 @@ img {
 .projectCard--description {
   display: flex;
   justify-content: space-between;
-  
   border: solid #5b6dcd 3px;
   padding: 1.25rem; 
 }
@@ -112,4 +112,8 @@ img {
 
 .bigCard {
   margin: 1rem 5rem 2rem 5rem;
+}
+
+.smallerDiv {
+  flex: 0 1 45%;
 }

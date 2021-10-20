@@ -6,7 +6,7 @@ class ProjectCard extends React.Component {
     let { project } = this.props;
     project = project || {};
     return (
-      <div className="projectCard">
+      <div className="projectCard smallerDiv">
         <Link to={`/projects/${project.id}`}>
           <h1>{project.title}</h1>
         </Link>

@@ -1,5 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect} from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchProjects } from "../../redux/projects";
 import Navbar from "../Navbar";
 import ProjectCard from "./ProjectCard";
@@ -17,6 +18,10 @@ export class AllProjects extends React.Component {
     return (
       <div>
         <Navbar />
+        <div className="flex-row">
+          <h1>All Projects</h1>
+          <Link to="/projects/add"><button type="button">Add Project</button></Link>
+        </div>
         <div className="projects">
           {projects.map((project) => {
             return <ProjectCard project={project} key={project.id} />;

@@ -28,7 +28,6 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    console.log(req.body)
     const robot = await Robot.create(req.body);
     res.json(robot);
   } catch (err) {

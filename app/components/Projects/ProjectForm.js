@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "../Navbar";
 import { connect } from "react-redux";
-import { createRobot } from "../../redux/singleRobot";
+import { createProject } from "../../redux/singleProject";
 
 // Notice that we're exporting the AllRobots component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
-export class RobotForm extends React.Component {
+export class ProjectForm extends React.Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -14,21 +14,22 @@ export class RobotForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const name = event.target.robotName.value;
-    this.props.createRobot({
-      name,
+    const title = event.target.projectName.value;
+    this.props.createProject({
+      title,
     });
-    event.target.robotName.value = "";
+    event.target.projectName.value = "";
   }
 
   render() {
+    console.log(this.props.project);
     return (
       <div>
         <Navbar />
-        <h1>Add Robot</h1>
+        <h1>Add Project</h1>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="robotName">Robot Name:</label>
-          <input type="text" id="robotName" name="robotName"></input>
+          <label htmlFor="projectName">Project Name:</label>
+          <input type="text" id="projectName" name="projectName"></input>
           <br></br>
           <br></br>
           <input type="submit"></input>
@@ -40,14 +41,14 @@ export class RobotForm extends React.Component {
 
 const mapState = (state) => {
   return {
-    robot: state,
+    project: state,
   };
 };
 
 const mapDispatch = (dispatch, { history }) => {
   return {
-    createRobot: (robot) => dispatch(createRobot(robot, history)),
+    createProject: (project) => dispatch(createProject(project, history)),
   };
 };
 
-export default connect(mapState, mapDispatch)(RobotForm);
+export default connect(mapState, mapDispatch)(ProjectForm);

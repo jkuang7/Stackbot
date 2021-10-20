@@ -5,7 +5,9 @@ class AllRobotProjects extends React.Component {
   render() {
     let { projects } = this.props;
     projects = projects || [];
-    return (
+    return projects.length === 0 ? (
+      <p>There are no projects currently assigned to this robot</p>
+    ) : (
       <div>
         {projects.map((project) => {
           return <ProjectTitle key={project.id} project={project} />;

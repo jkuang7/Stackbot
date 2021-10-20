@@ -11,7 +11,6 @@ class SingleRobot extends React.Component {
   render() {
     let { robot } = this.props;
     robot = robot || {};
-    console.log(robot);
     return (
       <div>
         <Navbar />
@@ -32,8 +31,7 @@ class SingleRobot extends React.Component {
         <h2>Projects assigned to {robot.name}</h2>
 
         <div className="robotProjects">
-          
-          <AllRobotProjects projects={robot.projects}/>
+          <AllRobotProjects projects={robot.projects} />
         </div>
       </div>
     );

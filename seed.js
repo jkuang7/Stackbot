@@ -19,7 +19,7 @@ const randNum = (num, isDecimal = false) => {
 
 const makeRobots = (arr, len) => {
   const fuelType = ["gas", "diesel", "electric"];
-  for (let i = 0; i < len; i++) {
+  for (let i = 1; i <= len; i++) {
     const randomFuelType = randNum(fuelType.length);
     const randomFuelLevel = randNum(100, true);
     arr.push({
@@ -33,7 +33,7 @@ const makeRobots = (arr, len) => {
 
 const makeProjects = (arr, len) => {
   const boolArr = [true, false];
-  for (let i = 0; i < len; i++) {
+  for (let i = 1; i <= len; i++) {
     const randomCompleted = randNum(boolArr.length);
     arr.push({
       title: `Project ${i}`,

@@ -12,13 +12,13 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const robot = await Project.findOne({
+    const project = await Project.findOne({
       where: {
         id: req.params.id,
       },
-      include: Robot
+      include: Robot,
     });
-    res.json(robot);
+    res.json(project);
   } catch (err) {
     next(err);
   }

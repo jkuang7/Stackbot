@@ -1,75 +1,87 @@
 const { green, red } = require("chalk");
 const { db, Project, Robot } = require("./server/db");
 
-let robots = [];
-let projects = [];
-
 //Helper Functions
-const randNum = (num, isDecimal = false) => {
-  //generates random num from [0, num)
-  if (!isDecimal) {
+const randNum = (num, returnDecimal = false) => {
+  if (!returnDecimal) {
+    //Returns random integer [0, num) (exclusive of num)
     return Math.floor(Math.random() * num);
   } else {
-    //Returns Random Decimal inclusive [0,num]
+    //Returns a Random Decimal [0,num] (inclusive of num)
     const random =
       Math.random() < 0.5 ? (1 - Math.random()) * num : Math.random() * num;
     return parseFloat(random.toFixed(2));
   }
 };
 
-const makeRobots = (arr, len) => {
+const makeRobots = (len) => {
+  const robotsArr = [];
   const fuelType = ["gas", "diesel", "electric"];
   for (let i = 1; i <= len; i++) {
-    const randomFuelType = randNum(fuelType.length);
-    const randomFuelLevel = randNum(100, true);
-    arr.push({
+    const randomIdx = randNum(fuelType.length);
+    const fuelLevel_RandomDecimal = randNum(100, true);
+    robotsArr.push({
       name: `Robot ${i}`,
-      fuelType: fuelType[randomFuelType],
-      fuelLevel: randomFuelLevel,
+      fuelType: fuelType[randomIdx],
+      fuelLevel: fuelLevel_RandomDecimal,
     });
   }
-  return arr;
+  return robotsArr;
 };
 
-const makeProjects = (arr, len) => {
+const makeProjects = (len) => {
+  const projectsArr = [];
   const boolArr = [true, false];
   for (let i = 1; i <= len; i++) {
-    const randomCompleted = randNum(boolArr.length);
-    arr.push({
+    const randomIdx = randNum(boolArr.length);
+    projectsArr.push({
       title: `Project ${i}`,
       deadline: Date.now(),
       priority: randNum(10) + 1,
-      completed: boolArr[randomCompleted],
+      completed: boolArr[randomIdx],
       description: `Description for Project${i}`,
     });
   }
-  return arr;
+  return projectsArr;
+};
+
+const createRobotsDB = async (robots) => {
+  return Promise.all(
+    robots.map((robot) => {
+      return Robot.create(robot);
+    })
+  );
+};
+
+const createProjectsDB = async (projects) => {
+  return Promise.all(
+    projects.map((project) => {
+      return Project.create(project);
+    })
+  );
 };
 
 const seed = async () => {
   try {
-    //Create Robots and Projects
-    robots = makeRobots(robots, 10);
-    projects = makeProjects(projects, 10);
+    //Creates 10 random Robots and Projects
+    let robots = [];
+    let projects = [];
+    const amount = 10;
+    robots = makeRobots(amount);
+    projects = makeProjects(amount);
 
+    //Sync Force on DB
     await db.sync({ force: true });
-    //seeding
-    const robotsInstances = await Promise.all(
-      robots.map((robot) => {
-        return Robot.create(robot);
-      })
-    );
 
-    const projectsInstances = await Promise.all(
-      projects.map((project) => {
-        return Project.create(project);
-      })
-    );
+    //Returns Robot and Project Model instances of their respective arrays
+    const robotsArr = await createRobotsDB(robots);
+    const projectsArr = await createProjectsDB(projects);
 
-    //Creating Join Relationships between Robots and Projects via Sequelize Magic Methods
+    //Sequelize Magic Methods -- Creating Join Relationships between Robots and Projects
     await Promise.all(
-      robotsInstances.map((robot, idx) => {
-        return robot.addProject(projectsInstances[idx]);
+      robotsArr.map((robot, idx) => {
+        const project = projectsArr[idx];
+        return robot.addProject(project);
       })
     );
   } catch (err) {

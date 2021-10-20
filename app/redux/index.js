@@ -6,8 +6,8 @@ import projectReducer from "./singleProject";
 
 const appReducer = combineReducers({
   projects: projectsReducer,
-  robots: robotsReducer,
   project: projectReducer,
+  robots: robotsReducer,
   robot: robotReducer,
 });
 

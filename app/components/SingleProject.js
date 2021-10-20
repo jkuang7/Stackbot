@@ -36,11 +36,12 @@ class SingleProject extends React.Component {
   render() {
     let { project } = this.props;
     project = project || {};
+    console.log(project);
     return (
       <div>
         <Navbar />
         {this.projectCard(project)}
-        <h2>Projects assigned to this project</h2>
+        <h2>Robots assigned to this project</h2>
         <AllProjectRobots robots={project.robots} />
       </div>
     );

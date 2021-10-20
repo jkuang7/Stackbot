@@ -13,9 +13,29 @@ const spaceBetween = "space-between";
 // (below) is not connected to Redux, while the default export (at the very
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
 export class AllRobots extends React.Component {
-
   componentDidMount() {
     this.props.fetchRobots();
+  }
+
+  navRobotForm() {
+    return (
+      <div className="flex-row">
+        <h1>All Robots</h1>
+        <Link to="/robots/add">
+          <button type="button">Add Robot</button>
+        </Link>
+      </div>
+    );
+  }
+
+  allRobots(robots) {
+    return (
+      <div className="robots">
+        {robots.map((robot) => {
+          return <RobotCard robot={robot} key={robot.id} />;
+        })}
+      </div>
+    );
   }
 
   render() {
@@ -24,15 +44,8 @@ export class AllRobots extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className="flex-row">
-          <h1>All Robots</h1>
-          <Link to="/robots/add"><button type="button">Add Robot</button></Link>
-        </div>
-        <div className="robots">
-          {robots.map((robot) => {
-            return <RobotCard robot={robot} key={robot.id} />;
-          })}
-        </div>
+        {this.navRobotForm()}
+        {this.allRobots(robots)}
       </div>
     );
   }

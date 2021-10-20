@@ -12,8 +12,9 @@ class AllProjectRobots extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.robots !== prevProps.robots) {
-      this.props.robots.map(async (robot) => {
+    const { robots } = this.props;
+    if (robots !== prevProps.robots) {
+      robots.map(async (robot) => {
         await this.props.fetchProjectsByRobotId(robot.id);
         this.setState({
           robots: [...this.state.robots, this.props.robot],
@@ -22,17 +23,23 @@ class AllProjectRobots extends React.Component {
     }
   }
 
+  allAssignedRobots(robots) {
+    return (
+      <div className="flex-container">
+        {robots.map((robot) => (
+          <AssignedRobot key={robot.id} robot={robot} />
+        ))}
+      </div>
+    );
+  }
+
   render() {
     let { robots } = this.state;
     robots = robots || [];
     return robots.length === 0 ? (
       <p>There are no robots currently assigned to this project.</p>
     ) : (
-      <div className="flex-container">
-        {this.state.robots.map((robot) => {
-          return <AssignedRobot key={robot.id} robot={robot} />;
-        })}
-      </div>
+      this.allAssignedRobots(robots)
     );
   }
 }

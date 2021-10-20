@@ -21,19 +21,25 @@ export class ProjectForm extends React.Component {
     event.target.projectName.value = "";
   }
 
+  projectForm() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label htmlFor="projectName">Project Name:</label>
+        <input type="text" id="projectName" name="projectName"></input>
+        <br></br>
+        <br></br>
+        <input type="submit"></input>
+      </form>
+    );
+  }
+
   render() {
     console.log(this.props.project);
     return (
       <div>
         <Navbar />
         <h1>Add Project</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="projectName">Project Name:</label>
-          <input type="text" id="projectName" name="projectName"></input>
-          <br></br>
-          <br></br>
-          <input type="submit"></input>
-        </form>
+        {this.projectForm()}
       </div>
     );
   }

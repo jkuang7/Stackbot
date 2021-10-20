@@ -21,18 +21,24 @@ export class RobotForm extends React.Component {
     event.target.robotName.value = "";
   }
 
+  robotForm() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label htmlFor="robotName">Robot Name:</label>
+        <input type="text" id="robotName" name="robotName"></input>
+        <br></br>
+        <br></br>
+        <input type="submit"></input>
+      </form>
+    );
+  }
+
   render() {
     return (
       <div>
         <Navbar />
         <h1>Add Robot</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="robotName">Robot Name:</label>
-          <input type="text" id="robotName" name="robotName"></input>
-          <br></br>
-          <br></br>
-          <input type="submit"></input>
-        </form>
+        {this.robotForm()}
       </div>
     );
   }

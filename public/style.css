@@ -13,7 +13,8 @@ body {
   padding: 0;
   margin: 0;
   height: 100%;
-  width: 100vw;
+  width: 100%;
+  text-align: center;
 }
 
 nav {
@@ -25,6 +26,7 @@ nav {
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
 
 .rightNav__link {
@@ -55,38 +57,53 @@ img {
   
 }
 
+
+
 .robots {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 10px;
 }
 
 .robotCard {
-  padding: 0.5em;
-  flex: 0 1 50%;
-  border: solid #5b6dcd 1px;
+  flex: 0 1 45%;
+  border: solid #5b6dcd 3px;
   display: flex;
   justify-content: space-between;
+  padding: 1.25rem;
 }
 
 .robotCard__img {
   flex: 0 1 30%;
 }
 .robotCard__text {
-  flex: 0 1 65%;
+  flex: 0 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .projects {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 10px;
 }
 
 .projectCard {
-  padding: 0.5em;
-  flex: 0 1 50%;
-  border: solid #5b6dcd 1px;
   display: flex;
+  flex: 0 1 45%;
+  border: solid #5b6dcd 3px;
   flex-direction: column;
   justify-content: space-between;
+  padding: 1.25rem;
+}
+
+.noBorder {
+  border: 0;
+}
+
+.maxwidth {
+  max-width: 45%;
 }

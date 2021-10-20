@@ -9,12 +9,14 @@ class RobotCard extends React.Component {
   }
 
   robotCardText(robot) {
+    let {projects} = robot;
+    projects = projects || [];
     return (
       <div className="robotCard__text">
         <Link to={`/robots/${robot.id}`}>
           <h1>{robot.name}</h1>
         </Link>
-        <p>{`Projects: ${robot.projects.length}`}</p>
+        <p>{`Projects: ${projects.length}`}</p>
         <p>{`Fuel Type: ${robot.fuelType}`}</p>
         <p>{`Fuel Level: ${robot.fuelLevel}`}</p>
       </div>

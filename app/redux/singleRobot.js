@@ -23,6 +23,19 @@ export const fetchRobot = (id) => {
   };
 };
 
+export const fetchProjectsByRobotId = (id) => {
+  return async (dispatch) => {
+    try {
+      const {data: robot} = await Axios.get(`/api/robots/${id}`);
+      const {data: projects} = await Axios.get(`/api/projects/robot/${id}`);
+      robot.projects = projects;
+      dispatch(setRobot(robot));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
 export const createRobot = (robot, history) => {
   return async (dispatch) => {
     try {

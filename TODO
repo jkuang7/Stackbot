@@ -1,19 +1,1 @@
 Todo:
-  #### Backend
-  
-  ✔ [x] Write a route to add a new robot @started(21-10-20 14:37) @done(21-10-20 14:41) @lasted(4m9s)
-✔ [x] Write a route to add a new project @started(21-10-20 14:42) @done(21-10-20 14:42) @lasted(45s)
-  #### Frontend
-
-  - [] Write a component to display a form for adding a new robot that contains _at least_ an input for name @started(21-10-20 15:07)
-  ✔ [x ] Display this component as part of the all-robots view, alongside the list of robots @started(21-10-20 15:08) @done(21-10-20 15:08) @lasted(19s)
-  - Submitting the form with valid data should:
-    - [ ] Make an AJAX request that causes the new robot to be persisted in the database
-    - [ ] Add the new robot to the list of robots without needing to refresh the page
-  
-  - [ ] Write a component to display a form for adding a new project that contains _at least_ an input for title
-  - [ ] Display this component as part of the all-projects view, alongside the list of projects
-  - Submitting the form with valid data should:
-    - [ ] Make an AJAX request that causes the new project to be saved to the database
-    - [ ] Add the new project to the list of projects without needing to refresh the page
-  

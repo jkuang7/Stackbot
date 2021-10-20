@@ -9,7 +9,7 @@
 }
 
 body {
-  background: linear-gradient(#ffffff, #c0c0c0);
+  background: linear-gradient(#c0c0c0);
   padding: 0;
   margin: 0;
   height: 100%;
@@ -54,12 +54,10 @@ h1 {
 img {
   object-fit: cover;
   width: 25%;
-  
 }
 
-
-
-.robots {
+.robots,
+.projects {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -67,10 +65,10 @@ img {
 }
 
 .robotCard {
-  flex: 0 1 45%;
-  border: solid #5b6dcd 3px;
   display: flex;
   justify-content: space-between;
+  flex: 0 1 45%;
+  border: solid #5b6dcd 3px;
   padding: 1.25rem;
 }
 
@@ -84,19 +82,12 @@ img {
   justify-content: space-evenly;
 }
 
-.projects {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 10px;
-}
-
 .projectCard {
   display: flex;
-  flex: 0 1 45%;
-  border: solid #5b6dcd 3px;
   flex-direction: column;
   justify-content: space-between;
+  flex: 0 1 45%;
+  border: solid #5b6dcd 3px;
   padding: 1.25rem;
 }
 

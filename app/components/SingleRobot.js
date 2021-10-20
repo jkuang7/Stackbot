@@ -8,31 +8,41 @@ class SingleRobot extends React.Component {
   componentDidMount() {
     this.props.fetchRobot(this.props.match.params.id);
   }
+
+  robotCardImage(robot) {
+    return (
+      <img className="robotCard__img" src={robot.imageUrl} alt="IMAGE"></img>
+    );
+  }
+
+  robotCardText(robot) {
+    return (
+      <div className="robotCard__text">
+        <h1>{robot.name}</h1>
+        <p>{`Fuel Type: ${robot.fuelType}`}</p>
+        <p>{`Fuel Level: ${robot.fuelLevel}`}</p>
+      </div>
+    );
+  }
+
+  robotCard(robot) {
+    return (
+      <div className="robotCard">
+        {this.robotCardImage(robot)}
+        {this.robotCardText(robot)}
+      </div>
+    );
+  }
+
   render() {
     let { robot } = this.props;
     robot = robot || {};
     return (
       <div>
         <Navbar />
-        <div className="robotCard">
-          <img
-            className="robotCard__img"
-            src={robot.imageUrl}
-            alt="IMAGE"
-          ></img>
-
-          <div className="robotCard__text">
-            <h1>{robot.name}</h1>
-            <p>{`Fuel Type: ${robot.fuelType}`}</p>
-            <p>{`Fuel Level: ${robot.fuelLevel}`}</p>
-          </div>
-        </div>
-
+        {this.robotCard(robot)}
         <h2>Projects assigned to {robot.name}</h2>
-
-        <div className="robotProjects">
-          <AllRobotProjects projects={robot.projects} />
-        </div>
+        <AllRobotProjects projects={robot.projects} />
       </div>
     );
   }

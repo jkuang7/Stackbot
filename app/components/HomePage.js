@@ -10,7 +10,7 @@ const HomePage = () => {
           Welcome to StackBot Project Management: your robot employees are
           awaiting assignments!
         </h1>
-        <p>Let's Rule the World</p>
+        <p>We await your command</p>
       </main>
     </div>
   );

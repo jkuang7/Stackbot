@@ -1,6 +1,6 @@
 import React from "react";
 
-class ProjectTitle extends React.Component {
+class AssignedProject extends React.Component {
   render() {
     let { project } = this.props;
     project = project || {};
@@ -18,4 +18,4 @@ class ProjectTitle extends React.Component {
   }
 }
 
-export default ProjectTitle;
+export default AssignedProject;

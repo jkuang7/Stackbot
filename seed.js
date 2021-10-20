@@ -39,7 +39,7 @@ const makeProjects = (len) => {
       deadline: Date.now(),
       priority: randNum(10) + 1,
       completed: boolArr[randomIdx],
-      description: `Description for Project${i}`,
+      description: `Description for Project ${i}`,
     });
   }
   return projectsArr;

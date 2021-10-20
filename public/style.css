@@ -98,3 +98,9 @@ img {
 .maxwidth {
   max-width: 45%;
 }
+
+.centerFlex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

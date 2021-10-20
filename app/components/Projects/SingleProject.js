@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchProject } from "../redux/singleProject";
-import Navbar from "./Navbar";
+import { fetchProject } from "../../redux/singleProject";
+import Navbar from "../Navbar";
 import AllProjectRobots from "./AllProjectRobots";
 
 class SingleProject extends React.Component {

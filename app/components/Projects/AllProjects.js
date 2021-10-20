@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchProjects } from "../redux/projects";
-import Navbar from "./Navbar";
+import { fetchProjects } from "../../redux/projects";
+import Navbar from "../Navbar";
 import ProjectCard from "./ProjectCard";
 
 // Notice that we're exporting the AllProjects component twice. The named export

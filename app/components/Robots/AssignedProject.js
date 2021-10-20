@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "../Projects/ProjectCard";
 
 class AssignedProject extends React.Component {
   render() {

@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./HomePage";
-import AllRobots from "./AllRobots";
-import AllProjects from "./AllProjects";
-import SingleRobot from "./SingleRobot";
-import SingleProject from "./SingleProject";
+import AllProjects from "./Projects/AllProjects";
+import AllRobots from "./Robots/AllRobots";
+import SingleRobot from "./Robots/SingleRobot";
+import SingleProject from "./Projects/SingleProject";
 
 const Routes = () => {
   return (

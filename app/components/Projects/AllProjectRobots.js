@@ -1,7 +1,7 @@
 import React from "react";
 import AssignedRobot from "./AssignedRobot";
 import { connect } from "react-redux";
-import { fetchProjectsByRobotId } from "../redux/projects";
+import { fetchProjectsByRobotId } from "../../redux/projects";
 
 class AllProjectRobots extends React.Component {
   componentDidUpdate(prevProps) {

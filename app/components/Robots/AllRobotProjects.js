@@ -1,5 +1,5 @@
 import React from "react";
-import AssignedProject from "./AssignedProject";
+import AssignedProject from "./AssignedProject"
 
 class AllRobotProjects extends React.Component {
   render() {

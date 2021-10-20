@@ -1,5 +1,5 @@
 import React from "react";
-import RobotCard from "./RobotCard";
+import RobotCard from "../Robots/RobotCard";
 
 class AssignedRobot extends React.Component {
   render() {

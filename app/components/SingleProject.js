@@ -36,7 +36,6 @@ class SingleProject extends React.Component {
   render() {
     let { project } = this.props;
     project = project || {};
-    console.log(project);
     return (
       <div>
         <Navbar />

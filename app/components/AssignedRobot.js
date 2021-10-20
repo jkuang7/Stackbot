@@ -3,12 +3,12 @@ import RobotCard from "./RobotCard";
 
 class AssignedRobot extends React.Component {
   render() {
-    let { robot } = this.props;
-    console.log(this.props);
+    let { robot, state } = this.props;
     robot = robot || {};
+    robot.projects = state.projects;
     return (
       <div>
-        {/* robot !== {} ? <RobotCard robot={robot} /> : <p></p> */}
+        {robot !== {} ? <RobotCard robot={robot}/> : <p></p>}
       </div>
     );
   }

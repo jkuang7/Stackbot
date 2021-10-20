@@ -6,7 +6,7 @@ class AssignedProject extends React.Component {
     project = project || {};
 
     return (
-      <div className="projectCard noBorder">
+      <div className="projectCard">
         <h1>{project.title}</h1>
         <div>
           <p>{`Completed: ${project.completed}`}</p>

@@ -8,7 +8,7 @@ class AllRobotProjects extends React.Component {
     return projects.length === 0 ? (
       <p>There are no projects currently assigned to this robot.</p>
     ) : (
-      <div>
+      <div className="AllRobotProjects">
         {projects.map((project) => {
           return <AssignedProject key={project.id} project={project} />;
         })}

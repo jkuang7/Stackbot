@@ -21,7 +21,18 @@ export const fetchProjects = () => {
       console.log(err);
     }
   };
-};
+}; 
+
+export const fetchProjectsByRobotId = (id) => {
+  return async (dispatch) => {
+    try {
+      const {data} = await Axios.get(`/api/projects/robot/${id}`);
+      dispatch(setProjects(data));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
 
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers

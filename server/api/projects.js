@@ -24,4 +24,18 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+router.get("/robot/:id", async (req, res, next) => {
+  try {
+    const robot = await Robot.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: Project
+    })
+    res.json(robot.projects);
+  } catch (err) {
+    next(err);
+  }
+})
+
 module.exports = router;

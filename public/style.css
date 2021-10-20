@@ -56,6 +56,12 @@ img {
   width: 25%;
 }
 
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
 .robots,
 .projects {
   display: flex;
@@ -85,18 +91,17 @@ img {
 .projectCard {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   flex: 0 1 45%;
   border: solid #5b6dcd 3px;
   padding: 1.25rem;
 }
 
-.noBorder {
-  border: 0;
-}
-
-.maxwidth {
-  max-width: 45%;
+.projectCard--description {
+  display: flex;
+  justify-content: space-between;
+  
+  border: solid #5b6dcd 3px;
+  padding: 1.25rem; 
 }
 
 .centerFlex {
@@ -105,6 +110,6 @@ img {
   justify-content: center;
 }
 
-.AllRobotProjects {
-
+.bigCard {
+  margin: 1rem 5rem 2rem 5rem;
 }

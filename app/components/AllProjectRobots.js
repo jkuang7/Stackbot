@@ -17,7 +17,7 @@ class AllProjectRobots extends React.Component {
     return robots.length === 0 ? (
       <p>There are no robots currently assigned to this project.</p>
     ) : (
-      <div>
+      <div className="flex-container">
         {robots.map((robot) => {
           return <AssignedRobot key={robot.id} robot={robot} state={state} />;
         })}

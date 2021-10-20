@@ -40,7 +40,7 @@ class SingleRobot extends React.Component {
     return (
       <div>
         <Navbar />
-        {this.robotCard(robot)}
+        <div className="bigCard">{this.robotCard(robot)}</div>
         <h2>Projects assigned to {robot.name}</h2>
         <AllRobotProjects projects={robot.projects} />
       </div>

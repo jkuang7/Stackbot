@@ -1,4 +1,5 @@
 import React from "react";
+import ProjectCard from "./ProjectCard";
 
 class AssignedProject extends React.Component {
   render() {
@@ -6,14 +7,7 @@ class AssignedProject extends React.Component {
     project = project || {};
 
     return (
-      <div className="projectCard">
-        <h1>{project.title}</h1>
-        <div>
-          <p>{`Completed: ${project.completed}`}</p>
-          <p>{`Deadline: ${project.deadline}`}</p>
-          <p>{`Priority: ${project.priority}`}</p>
-        </div>
-      </div>
+      <div>{project !== {} ? <ProjectCard project={project} /> : <p></p>}</div>
     );
   }
 }

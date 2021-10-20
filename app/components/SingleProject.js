@@ -26,7 +26,7 @@ class SingleProject extends React.Component {
 
   projectCard(project) {
     return (
-      <div className="robotCard">
+      <div className="projectCard--description">
         {this.projectCardDescription(project)}
         {this.projectCardText(project)}
       </div>
@@ -39,7 +39,7 @@ class SingleProject extends React.Component {
     return (
       <div>
         <Navbar />
-        {this.projectCard(project)}
+        <div className="bigCard">{this.projectCard(project)}</div>
         <h2>Robots assigned to this project</h2>
         <AllProjectRobots robots={project.robots} />
       </div>

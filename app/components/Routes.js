@@ -5,12 +5,14 @@ import AllProjects from "./Projects/AllProjects";
 import AllRobots from "./Robots/AllRobots";
 import SingleRobot from "./Robots/SingleRobot";
 import SingleProject from "./Projects/SingleProject";
+import RobotForm from "./Robots/RobotForm";
 
 const Routes = () => {
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/robots/add" component={RobotForm} />
         <Route exact path="/robots" component={AllRobots} />
         <Route exact path="/robots/:id" component={SingleRobot} />
         <Route exact path="/projects" component={AllProjects} />

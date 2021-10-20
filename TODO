@@ -1,10 +1,1 @@
 Todo:
-✔ Refactor My code @started(21-10-19 21:49) @done(21-10-19 22:43) @lasted(54m30s)
-✔ Clicking on a project from the all-projects view should navigate to show that project in the single-project view @done(21-10-19 23:05)
-✔ fetchStore @done(21-10-19 23:27)
-✔ Display the appropriate project's info when the url matches `/projects/:projectId` @done(21-10-19 23:27)
-✔ The project's title, deadline, priority, description @done(21-10-19 23:28)
-✔ A list of the names of all robots in that project (or a helpful message if it doesn't have any robots) @done(21-10-20 13:17)
-  - go through each robot when the component is mounted, fetchRobot for each one which returns the robot and its included projects
-  - set the state to contain that new robot information in a robots array
-  - rerender the component and fill in with the information you need

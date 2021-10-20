@@ -2,7 +2,7 @@ Todo:
   #### Backend
   
   ✔ [x] Write a route to add a new robot @started(21-10-20 14:37) @done(21-10-20 14:41) @lasted(4m9s)
-- [x] Write a route to add a new project @started(21-10-20 14:41)
+✔ [x] Write a route to add a new project @started(21-10-20 14:42) @done(21-10-20 14:42) @lasted(45s)
   #### Frontend
 
   - [ ] Write a component to display a form for adding a new robot that contains _at least_ an input for name

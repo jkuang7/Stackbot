@@ -17,6 +17,9 @@ export class AllRobots extends React.Component {
     return (
       <div>
         <Navbar />
+        <div>
+          
+        </div>
         <div className="robots">
           {robots.map((robot) => {
             return <RobotCard robot={robot} key={robot.id} />;

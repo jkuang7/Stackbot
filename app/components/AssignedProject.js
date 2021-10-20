@@ -7,7 +7,7 @@ class AssignedProject extends React.Component {
     project = project || {};
 
     return (
-      <div>{project !== {} ? <ProjectCard project={project} /> : <p></p>}</div>
+      <div className="smallerDiv">{project !== {} ? <ProjectCard project={project} /> : <p></p>}</div>
     );
   }
 }

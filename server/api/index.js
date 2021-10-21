@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const robots = require("./robots");
 const projects = require("./projects");
+const robotprojects = require("./robotprojects")
 
 // Your routes go here!
 // NOTE: Any routes that you put here are ALREADY mounted on `/api`
@@ -21,6 +22,7 @@ const projects = require("./projects");
 
 router.use("/robots", robots);
 router.use("/projects", projects);
+router.use("/robotprojects", robotprojects);
 
 router.use((req, res, next) => {
   const err = new Error("API route not found!");

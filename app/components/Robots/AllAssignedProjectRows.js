@@ -4,7 +4,7 @@ import AssignedProjectRow from "./AssignedProjectRow";
 class AllAssignedProjectRows extends React.Component {
   allAssignedProjects(projects) {
     return (
-      <div className="flex-container">
+      <div className="flex-column">
         {projects.map((project) => {
           return <AssignedProjectRow key={project.id} project={project} />;
         })}

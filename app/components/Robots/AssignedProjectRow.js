@@ -6,7 +6,13 @@ class AssignedProjectCard extends React.Component {
     project = project || {};
     console.log(project);
     return (
-      <div></div>
+      <div >
+        <p>{project.title}</p>
+        <p>{`Completed: ${project.completed}`}</p>
+        <p>{`Deadline: ${project.deadline}`}</p>
+        <p>{`Priority: ${project.priority}`}</p>
+        <button type="button">Unassign from robot</button>
+      </div>
     );
   }
 }

@@ -1,5 +1,4 @@
 import Axios from "axios";
-import { fetchRobots } from "./robots";
 
 //Action Types
 const SET_ROBOT = "SET_ROBOT";
@@ -60,15 +59,12 @@ export const deleteRobot = (id) => {
   };
 };
 
-export const updateRobot = (id, history) => {
+export const updateRobot = (robot, history) => {
   return async (dispatch) => {
     try {
-      const [rowsUpdated, updatedRobots] = await Axios.put(`/api/robots/${id}`);
-      if (updatedRobots.length !== 0) {
-        const robot = updatedRobots[0];
-        dispatch(setRobot(robot));
-        history.push("/robots");
-      }
+      const { data } = await Axios.put(`/api/robots/${robot.id}`, robot);
+      dispatch(setRobot(robot));
+      history.push("/robots");
     } catch (err) {
       console.log(err);
     }

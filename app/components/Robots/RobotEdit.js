@@ -47,9 +47,7 @@ export class RobotEdit extends React.Component {
   handleSave(event) {
     event.preventDefault();
     const { robot } = this.state;
-    this.props.updateRobot({
-      robot,
-    });
+    this.props.updateRobot(robot);
   }
 
   robotForm() {

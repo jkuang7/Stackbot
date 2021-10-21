@@ -51,13 +51,8 @@ router.delete("/:id", async (req, res, next) => {
 
 router.put("/:id", async (req, res, next) => {
   try {
-    const [rowsUpdated, updatedRobots] = await Robot.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-      returning: true,
-    });
-    res.json([rowsUpdated, updatedRobots]);
+    const robot = await Robot.findByPk(req.params.id);
+    res.send(await robot.update(req.body));
   } catch (err) {
     next(err);
   }

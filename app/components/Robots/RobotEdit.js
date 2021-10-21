@@ -108,11 +108,10 @@ export class RobotEdit extends React.Component {
   projects() {
     let { robot } = this.state;
     robot = robot || {};
-    console.log(robot);
     return (
       <div>
         <h3>Projects Assigned to {robot.name}</h3>
-        <label for="projects"></label>
+        <label htmlFor="projects"></label>
 
         <select name="projects" id="projects">
           <option value="">Select Project...</option>

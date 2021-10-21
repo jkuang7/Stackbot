@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchProject } from "../../redux/singleProject";
 import Navbar from "../Navbar";
-import AllProjectRobots from "./AllProjectRobots";
+import AllAssignedRobotCards from "./AllAssignedRobotCards";
 import { Link } from "react-router-dom";
 
 class SingleProject extends React.Component {
@@ -45,7 +45,7 @@ class SingleProject extends React.Component {
         <Navbar />
         <div className="bigCard">{this.projectCard(project)}</div>
         <h2>Robots assigned to this project</h2>
-        <AllProjectRobots robots={project.robots} />
+        <AllAssignedRobotCards robots={project.robots} />
       </div>
     );
   }

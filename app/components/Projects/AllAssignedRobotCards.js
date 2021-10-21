@@ -3,7 +3,7 @@ import AssignedRobotCard from "./AssignedRobotCard";
 import { connect } from "react-redux";
 import { fetchProjectsByRobotId } from "../../redux/singleRobot";
 
-class AllProjectRobots extends React.Component {
+class AllAssignedRobotCards extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -56,4 +56,4 @@ const mapToDispatch = (dispatch) => {
   };
 };
 
-export default connect(mapToState, mapToDispatch)(AllProjectRobots);
+export default connect(mapToState, mapToDispatch)(AllAssignedRobotCards);

@@ -1,7 +1,7 @@
 import React from "react";
 import AssignedProjectCard from "./AssignedProjectCard"
 
-class AllRobotProjects extends React.Component {
+class AllAssignedProjectCards extends React.Component {
   render() {
     let { projects } = this.props;
     projects = projects || [];
@@ -17,4 +17,4 @@ class AllRobotProjects extends React.Component {
   }
 }
 
-export default AllRobotProjects;
+export default AllAssignedProjectCards;

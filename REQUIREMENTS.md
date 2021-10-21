@@ -146,7 +146,7 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 
 #### Backend
 
-- [ ] Write a route to update an existing project
+- [x] Write a route to update an existing project
 - [ ] Write a route to update an existing robot
 
 

@@ -50,11 +50,13 @@ router.post("/", async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
+    const project = await Project.findByPk(req.params.id);
     await Project.destroy({
       where: {
         id: req.params.id,
       },
     });
+    res.json(project);
   } catch (err) {
     next(err);
   }

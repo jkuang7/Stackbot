@@ -7,7 +7,7 @@ import { fetchRobots } from "../../redux/robots";
 class RobotCard extends React.Component {
   constructor() {
     super();
-    this.deleteHandle = this.deleteHandle.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -17,7 +17,7 @@ class RobotCard extends React.Component {
     }
   }
 
-  deleteHandle(event) {
+  handleDelete(event) {
     this.props.deleteRobot(event.target.value);
   }
 
@@ -38,7 +38,7 @@ class RobotCard extends React.Component {
         <p>{`Projects: ${projects.length}`}</p>
         <p>{`Fuel Type: ${robot.fuelType}`}</p>
         <p>{`Fuel Level: ${robot.fuelLevel}`}</p>
-        <button type="button" onClick={this.deleteHandle} value={robot.id}>
+        <button type="button" onClick={this.handleDelete} value={robot.id}>
           x
         </button>
       </div>
@@ -64,9 +64,9 @@ const mapState = (state) => {
   };
 };
 
-const mapDispatch = (dispatch, { history }) => {
+const mapDispatch = (dispatch) => {
   return {
-    deleteRobot: (id) => dispatch(deleteRobot(id, history)),
+    deleteRobot: (id) => dispatch(deleteRobot(id)),
     fetchRobots: () => dispatch(fetchRobots()),
   };
 };

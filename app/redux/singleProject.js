@@ -35,6 +35,17 @@ export const createProject = (project, history) => {
   };
 };
 
+export const deleteProject = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await Axios.delete(`/api/projects/${id}`);
+      dispatch(setProject(data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
 export default function projectReducer(state = {}, action) {

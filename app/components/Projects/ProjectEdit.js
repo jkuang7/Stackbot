@@ -25,8 +25,6 @@ export class ProjectEdit extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.project !== prevProps.project) {
-      console.log(this.props.project);
-      console.log(prevProps.project);
       this.setState({
         project: this.props.project,
       });
@@ -48,12 +46,14 @@ export class ProjectEdit extends React.Component {
     this.props.updateProject(project);
   }
 
-  // formatDate = (date = new Date()) => {
-  //   const month = date.getUTCMonth() + 1;
-  //   const day = date.getUTCDate();
-  //   const year = date.getUTCFullYear();
-  //   return `${month}/${day}/${year}`;
-  // };
+  formatDate = (date) => {
+    console.log(date);
+    return date;
+    
+    // const day = date.getUTCDate();
+    // const year = date.getUTCFullYear();
+    // return `${month}/${day}/${year}`;
+  };
 
   projectForm() {
     let { project } = this.state;
@@ -78,7 +78,7 @@ export class ProjectEdit extends React.Component {
             type="text"
             id="deadline"
             name="deadline"
-            value={project.deadline} //Verify this works
+            value={this.formatDate(project.deadline)} //Verify this works
             onChange={this.handleChange}
           ></input>
         </label>

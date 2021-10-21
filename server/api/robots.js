@@ -49,4 +49,18 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
+router.put("/:id", async (req, res, next) => {
+  try {
+    const [rowsUpdated, updatedRobots] = await Robot.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+      returning: true,
+    });
+    res.json([rowsUpdated, updatedRobots]);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

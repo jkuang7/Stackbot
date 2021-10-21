@@ -64,13 +64,13 @@ router.delete("/:id", async (req, res, next) => {
 
 router.put("/:id", async (req, res, next) => {
   try {
-    const [updatedRowCount, updatedProjects] = await Project.update(req.body, {
+    const [rowsUpdated, updatedProjects] = await Project.update(req.body, {
       where: {
         id: req.params.id,
       },
       returning: true,
     });
-    res.json([updatedRowCount, updatedProjects]);
+    res.json([rowsUpdated, updatedProjects]);
   } catch (err) {
     next(err);
   }

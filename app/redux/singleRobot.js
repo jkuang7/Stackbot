@@ -60,13 +60,14 @@ export const deleteRobot = (id) => {
   };
 };
 
-export const updateRobot = (id) => {
+export const updateRobot = (id, history) => {
   return async (dispatch) => {
     try {
       const [rowsUpdated, updatedRobots] = await Axios.put(`/api/robots/${id}`);
       if (updatedRobots.length !== 0) {
         const robot = updatedRobots[0];
         dispatch(setRobot(robot));
+        history.push("/robots");
       }
     } catch (err) {
       console.log(err);

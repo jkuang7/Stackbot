@@ -46,7 +46,7 @@ export const deleteProject = (id) => {
   };
 };
 
-export const updateProject = (id) => {
+export const updateProject = (id, history) => {
   return async (dispatch) => {
     try {
       const [rowsUpdated, updatedProjects] = await Axios.put(
@@ -55,6 +55,7 @@ export const updateProject = (id) => {
       if (updatedProjects.length !== 0) {
         const project = updatedProjects[0];
         dispatch(setProject(project));
+        history.push("/projects");
       }
     } catch (err) {
       console.log(err);

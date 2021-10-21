@@ -9,7 +9,7 @@ export class ProjectEdit extends React.Component {
     this.state = {
       project: {
         title: "",
-        deadline: new Date(),
+        deadline: '',
         priority: 1,
         completed: false,
         description: "",
@@ -47,13 +47,14 @@ export class ProjectEdit extends React.Component {
   }
 
   formatDate = (date) => {
-    console.log(date);
-    return date;
-    
-    // const day = date.getUTCDate();
-    // const year = date.getUTCFullYear();
-    // return `${month}/${day}/${year}`;
+    const dateArr = date.split('-');
+    dateArr.push(dateArr.shift());
+    return dateArr.join('/');
   };
+
+  // formatComplete = (completed) => {
+  //   return completed ? 'yes' : 'no'
+  // }
 
   projectForm() {
     let { project } = this.state;
@@ -78,7 +79,7 @@ export class ProjectEdit extends React.Component {
             type="text"
             id="deadline"
             name="deadline"
-            value={this.formatDate(project.deadline)} //Verify this works
+            value={this.formatDate(project.deadline)} 
             onChange={this.handleChange}
           ></input>
         </label>
@@ -114,6 +115,7 @@ export class ProjectEdit extends React.Component {
   }
 
   render() {
+    console.log(this.props.deadline);
     return (
       <div>
         <Navbar />

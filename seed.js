@@ -63,7 +63,6 @@ const createProjectsDB = async (projects) => {
 
 const seed = async () => {
   try {
-    console.log(formatDate(new Date()));
     //Creates 10 random Robots and Projects
     let robots = [];
     let projects = [];

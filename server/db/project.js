@@ -1,5 +1,6 @@
 const db = require("./database");
 const Sequelize = require("sequelize");
+const { HotModuleReplacementPlugin } = require("webpack");
 
 const Project = db.define("project", {
   title: {
@@ -10,7 +11,7 @@ const Project = db.define("project", {
     },
   },
   deadline: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
     validate: {
       notEmpty: true,
     },

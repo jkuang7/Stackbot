@@ -9,9 +9,7 @@ class AllAssignedProjectCards extends React.Component {
       <p>There are no projects currently assigned to this robot.</p>
     ) : (
       <div className="flex-container">
-        {projects.map((project) => {
-          return <AssignedProjectCard key={project.id} project={project} />;
-        })}
+        
       </div>
     );
   }

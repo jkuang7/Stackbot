@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../Navbar";
 import { connect } from "react-redux";
 import { fetchRobot, updateRobot } from "../../redux/singleRobot";
+// import AllAssignedProjectRows from "./AllAssignedProjectRows";
 
 export class RobotEdit extends React.Component {
   constructor() {
@@ -104,14 +105,37 @@ export class RobotEdit extends React.Component {
       </form>
     );
   }
+  // {/* <AllAssignedProjectRows/> */}
+  projects() {
+    let { robot } = this.state;
+    robot = robot || {};
+    console.log(robot);
+    return (
+      <div>
+        <h3>Projects Assigned to {robot.name}</h3>
+        <label for="projects"></label>
+
+        <select name="projects" id="projects">
+          <option value="">Select Project...</option>
+        </select>
+        <button type="button">Add to Robot</button>
+        {robot.projects ? (
+          <div>Hi</div>
+        ) : (
+          <p>There are no projects currently assigned to this robot</p>
+        )}
+      </div>
+    );
+  }
 
   render() {
-
+    const { robot } = this.state;
     return (
       <div>
         <Navbar />
         <h1>Edit Robot</h1>
         {this.robotForm()}
+        {this.projects()}
       </div>
     );
   }

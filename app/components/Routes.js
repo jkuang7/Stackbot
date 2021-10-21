@@ -22,7 +22,7 @@ const Routes = () => {
         <Route exact path="/projects" component={AllProjects} />
         <Route exact path="/projects/:id" component={SingleProject} />
         <Route exact path="/robots/edit/:id" component={RobotEdit} />
-        {/* <Route exact path="/projects/edit/:id" component={ProjectEdit} /> */}
+        <Route exact path="/projects/edit/:id" component={ProjectEdit} />
       </Switch>
     </Router>
   );

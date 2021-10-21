@@ -64,13 +64,8 @@ router.delete("/:id", async (req, res, next) => {
 
 router.put("/:id", async (req, res, next) => {
   try {
-    const [rowsUpdated, updatedProjects] = await Project.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-      returning: true,
-    });
-    res.json([rowsUpdated, updatedProjects]);
+    const project = await Project.findByPk(req.params.id);
+    res.send(await project.update(req.body));
   } catch (err) {
     next(err);
   }

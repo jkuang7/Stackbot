@@ -36,7 +36,7 @@ const makeProjects = (len) => {
     const randomIdx = randNum(boolArr.length);
     projectsArr.push({
       title: `Project ${i}`,
-      deadline: Date.now(),
+      deadline: new Date(),
       priority: randNum(10) + 1,
       completed: boolArr[randomIdx],
       description: `Description for Project ${i}`,
@@ -63,6 +63,7 @@ const createProjectsDB = async (projects) => {
 
 const seed = async () => {
   try {
+    console.log(formatDate(new Date()));
     //Creates 10 random Robots and Projects
     let robots = [];
     let projects = [];

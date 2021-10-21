@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchProject } from "../../redux/singleProject";
 import Navbar from "../Navbar";
 import AllProjectRobots from "./AllProjectRobots";
+import { Link } from "react-router-dom";
 
 class SingleProject extends React.Component {
   componentDidMount() {
@@ -20,6 +21,9 @@ class SingleProject extends React.Component {
         <p>{`Deadline: ${project.deadline}`}</p>
         <p>{`Completed: ${project.completed}`}</p>
         <p>{`Priority: ${project.priority}`}</p>
+        <Link to={`/projects/edit/${project.id}`}>
+          <button type="button">Edit</button>
+        </Link>
       </div>
     );
   }

@@ -46,17 +46,12 @@ export const deleteProject = (id) => {
   };
 };
 
-export const updateProject = (id, history) => {
+export const updateProject = (project, history) => {
   return async (dispatch) => {
     try {
-      const [rowsUpdated, updatedProjects] = await Axios.put(
-        `/api/projects/${id}`
-      );
-      if (updatedProjects.length !== 0) {
-        const project = updatedProjects[0];
-        dispatch(setProject(project));
-        history.push("/projects");
-      }
+      const { data } = await Axios.put(`/api/projects/${project.id}`, project);
+      dispatch(setProject(data));
+      history.push("/projects");
     } catch (err) {
       console.log(err);
     }

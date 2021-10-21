@@ -17,6 +17,15 @@ export class AllRobots extends React.Component {
     this.props.fetchRobots();
   }
 
+  componentDidUdpate(prevProps) {
+    console.log(this.prevProps.robots);
+    console.log(this.props.robots);
+    
+    if(this.props.robots !== prevProps.robots) {
+      console.log(this.props.robots);
+    }
+  }
+
   navRobotForm() {
     return (
       <div className="flex-row">

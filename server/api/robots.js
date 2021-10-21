@@ -37,11 +37,13 @@ router.post("/", async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
+    const robot = await Robot.findByPk(req.params.id);
     await Robot.destroy({
       where: {
         id: req.params.id,
       },
     });
+    res.json(robot);
   } catch (err) {
     next(err);
   }

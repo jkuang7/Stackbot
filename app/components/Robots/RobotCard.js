@@ -1,7 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { deleteRobot } from "../../redux/singleRobot";
+import { fetchRobots } from "../../redux/robots";
 
 class RobotCard extends React.Component {
+  constructor() {
+    super();
+    this.deleteHandle = this.deleteHandle.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { deletedRobot } = this.props;
+    if (deletedRobot !== prevProps.deletedRobot) {
+      this.props.fetchRobots();
+    }
+  }
+
+  deleteHandle(event) {
+    this.props.deleteRobot(event.target.value);
+  }
+
   robotCardImg(robot) {
     return (
       <img className="robotCard__img" src={robot.imageUrl} alt="IMAGE"></img>
@@ -9,7 +28,7 @@ class RobotCard extends React.Component {
   }
 
   robotCardText(robot) {
-    let {projects} = robot;
+    let { projects } = robot;
     projects = projects || [];
     return (
       <div className="robotCard__text">
@@ -19,6 +38,9 @@ class RobotCard extends React.Component {
         <p>{`Projects: ${projects.length}`}</p>
         <p>{`Fuel Type: ${robot.fuelType}`}</p>
         <p>{`Fuel Level: ${robot.fuelLevel}`}</p>
+        <button type="button" onClick={this.deleteHandle} value={robot.id}>
+          x
+        </button>
       </div>
     );
   }
@@ -26,7 +48,6 @@ class RobotCard extends React.Component {
   render() {
     let { robot } = this.props;
     robot = robot || {};
-
     return (
       <div className="robotCard">
         {this.robotCardImg(robot)}
@@ -36,4 +57,18 @@ class RobotCard extends React.Component {
   }
 }
 
-export default RobotCard;
+const mapState = (state) => {
+  return {
+    robots: state.robots,
+    deletedRobot: state.robot,
+  };
+};
+
+const mapDispatch = (dispatch, { history }) => {
+  return {
+    deleteRobot: (id) => dispatch(deleteRobot(id, history)),
+    fetchRobots: () => dispatch(fetchRobots()),
+  };
+};
+
+export default connect(mapState, mapDispatch)(RobotCard);

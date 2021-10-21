@@ -5,8 +5,17 @@ import Navbar from "../Navbar";
 import AllRobotProjects from "./AllRobotProjects";
 
 class SingleRobot extends React.Component {
+  constructor() {
+    super();
+    this.handleEdit = this.handleEdit.bind(this);
+  }
+
   componentDidMount() {
     this.props.fetchRobot(this.props.match.params.id);
+  }
+
+  handleEdit(event) {
+    console.log(event.target.value)
   }
 
   robotCardImage(robot) {
@@ -21,6 +30,7 @@ class SingleRobot extends React.Component {
         <h1>{robot.name}</h1>
         <p>{`Fuel Type: ${robot.fuelType}`}</p>
         <p>{`Fuel Level: ${robot.fuelLevel}`}</p>
+        <button type="button" value={robot.id} onClick={this.handleEdit}>Edit</button>
       </div>
     );
   }

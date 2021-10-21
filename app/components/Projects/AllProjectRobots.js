@@ -1,5 +1,5 @@
 import React from "react";
-import AssignedRobot from "./AssignedRobot";
+import AssignedRobotCard from "./AssignedRobotCard";
 import { connect } from "react-redux";
 import { fetchProjectsByRobotId } from "../../redux/singleRobot";
 
@@ -27,7 +27,7 @@ class AllProjectRobots extends React.Component {
     return (
       <div className="flex-container">
         {robots.map((robot) => (
-          <AssignedRobot key={robot.id} robot={robot} />
+          <AssignedRobotCard key={robot.id} robot={robot} />
         ))}
       </div>
     );

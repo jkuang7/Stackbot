@@ -1,5 +1,5 @@
 import React from "react";
-import AssignedProject from "./AssignedProject"
+import AssignedProjectCard from "./AssignedProjectCard"
 
 class AllRobotProjects extends React.Component {
   render() {
@@ -10,7 +10,7 @@ class AllRobotProjects extends React.Component {
     ) : (
       <div className="flex-container">
         {projects.map((project) => {
-          return <AssignedProject key={project.id} project={project} />;
+          return <AssignedProjectCard key={project.id} project={project} />;
         })}
       </div>
     );

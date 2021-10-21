@@ -1,7 +1,7 @@
 import React from "react";
 import RobotCard from "../Robots/RobotCard";
 
-class AssignedRobot extends React.Component {
+class AssignedRobotCard extends React.Component {
   render() {
     let { robot } = this.props;
     robot = robot || {};
@@ -13,4 +13,4 @@ class AssignedRobot extends React.Component {
   }
 }
 
-export default AssignedRobot;
+export default AssignedRobotCard;

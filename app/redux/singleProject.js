@@ -46,6 +46,22 @@ export const deleteProject = (id) => {
   };
 };
 
+export const updateProject = (id) => {
+  return async (dispatch) => {
+    try {
+      const [rowsUpdated, updatedProjects] = await Axios.put(
+        `/api/projects/${id}`
+      );
+      if (updatedProjects.length !== 0) {
+        const project = updatedProjects[0];
+        dispatch(setProject(project));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
 export default function projectReducer(state = {}, action) {

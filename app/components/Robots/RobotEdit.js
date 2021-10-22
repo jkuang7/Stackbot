@@ -128,7 +128,7 @@ export class RobotEdit extends React.Component {
         <Navbar />
         <h1>Edit Robot</h1>
         {this.robotForm()}
-        {this.projects()}
+        {/* {this.projects()} */}
       </div>
     );
   }

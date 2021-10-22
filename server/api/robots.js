@@ -16,11 +16,19 @@ router.get("/project/:id", async (req, res, next) => {
   try {
     const robotProjects = await RobotProject.findAll({
       where: {
-        projectId: req.params.id
-      }
+        projectId: req.params.id,
+      },
     });
-    res.json(robotProjects);
-  } catch(err) {
+
+    const robots = await Promise.all(
+      robotProjects.map(async (robotProject) => {
+        const robot = await Robot.findByPk(robotProject.robotId);
+        return robot;
+      })
+    );
+    
+    res.json(robots);
+  } catch (err) {
     next(err);
   }
 });

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteRobot } from "../../redux/singleRobot";
 import { fetchRobots } from "../../redux/robots";
+import { deleteAssignedRobot } from "../../redux/singleRobot";
 
 class RobotCard extends React.Component {
   constructor() {
@@ -12,8 +13,8 @@ class RobotCard extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { deletedRobot } = this.props;
-    if (deletedRobot !== prevProps.deletedRobot) {
+    const { removeRobot } = this.props;
+    if (removeRobot !== prevProps.removeRobot) {
       this.props.fetchRobots();
     }
   }
@@ -32,6 +33,24 @@ class RobotCard extends React.Component {
     );
   }
 
+  robotButtons(robot) {
+    
+    return this.props.xBtnBool ? (
+      <button type="button" onClick={this.handleDelete} value={robot.id}>
+        x
+      </button>
+    ) : (
+      <div>
+        <button type="button" value={robot.id}>
+          Mark Complete
+        </button>
+        <button type="button" value={robot.id} onClick={this.handleUnassign}>
+          Unassign
+        </button>
+      </div>
+    );
+  }
+
   robotCardText(robot) {
     let { projects } = robot;
     projects = projects || [];
@@ -43,24 +62,7 @@ class RobotCard extends React.Component {
         <p>{`Projects: ${projects.length}`}</p>
         <p>{`Fuel Type: ${robot.fuelType}`}</p>
         <p>{`Fuel Level: ${robot.fuelLevel}`}</p>
-        {this.props.xBtnBool ? (
-          <button type="button" onClick={this.handleDelete} value={robot.id}>
-            x
-          </button>
-        ) : (
-          <div>
-            <button type="button" value={robot.id}>
-              Mark Complete
-            </button>
-            <button
-              type="button"
-              value={robot.id}
-              onClick={this.handleUnassign}
-            >
-              Unassign
-            </button>
-          </div>
-        )}
+        {this.robotButtons(robot)}
       </div>
     );
   }
@@ -79,7 +81,7 @@ class RobotCard extends React.Component {
 
 const mapState = (state) => {
   return {
-    deletedRobot: state.robot,
+    removeRobot: state.robot,
   };
 };
 
@@ -87,6 +89,7 @@ const mapDispatch = (dispatch) => {
   return {
     deleteRobot: (id) => dispatch(deleteRobot(id)),
     fetchRobots: () => dispatch(fetchRobots()),
+    deleteAssignedRobot: (id) => dispatch(deleteAssignedRobot(id)),
   };
 };
 

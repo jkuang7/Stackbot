@@ -1,7 +1,7 @@
 import React from "react";
 import AssignedRobotCard from "./AssignedRobotCard";
 import { connect } from "react-redux";
-import { fetchProjectsByRobotId } from "../../redux/singleRobot";
+import { fetchRobotWithProjects } from "../../redux/singleRobot";
 
 class AllAssignedRobotCards extends React.Component {
   constructor() {
@@ -15,7 +15,7 @@ class AllAssignedRobotCards extends React.Component {
     const { robots } = this.props;
     if (robots !== prevProps.robots) {
       robots.map(async (robot) => {
-        await this.props.fetchProjectsByRobotId(robot.id);
+        await this.props.fetchRobotWithProjects(robot.id);
         this.setState({
           robots: [...this.state.robots, this.props.robot],
         });
@@ -52,7 +52,7 @@ const mapToState = (state) => {
 
 const mapToDispatch = (dispatch) => {
   return {
-    fetchProjectsByRobotId: (id) => dispatch(fetchProjectsByRobotId(id)),
+    fetchRobotWithProjects: (id) => dispatch(fetchRobotWithProjects(id)),
   };
 };
 

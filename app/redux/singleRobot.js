@@ -23,7 +23,7 @@ export const fetchRobot = (id) => {
   };
 };
 
-export const fetchProjectsByRobotId = (id) => {
+export const fetchRobotWithProjects = (id) => {
   return async (dispatch) => {
     try {
       const { data: robot } = await Axios.get(`/api/robots/${id}`);

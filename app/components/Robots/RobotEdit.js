@@ -117,7 +117,7 @@ export class RobotEdit extends React.Component {
           <option value="">Select Project...</option>
         </select>
         <button type="button">Add to Robot</button>
-        <AllAssignedProjectRows projects={robot.projects} />
+        <AllAssignedProjectRows robot={robot} />
       </div>
     );
   }

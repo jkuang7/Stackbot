@@ -14,4 +14,17 @@ router.delete("/robots/:id", async (req, res, next) => {
   }
 });
 
+router.delete("/projects/:id", async (req, res, next) => {
+  try {
+    const robotProject = await RobotProject.destroy({
+      where: {
+        projectId: req.params.id,
+      },
+    });
+    res.json(robotProject);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

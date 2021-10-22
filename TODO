@@ -1,20 +1,17 @@
 Todo:
 
-  ☐ Edit Robot Requires full view
-  ☐ Edit Project Requires full view
+  ☐ Edit Robot Requires full view -> Edit Robot with no Projects
+  ☐ Edit Project Requires full view -> Edit Project with no Robots
+  ☐ Ensure full functionality
   
 
 
   - Minor Changes
     ✔ Robot Listing Blank Slate @done(21-10-22 17:23)
     ✔ Project Listing Blank Slate @done(21-10-22 17:23)
-    ☐ Edit Robot with no Projects
-    ☐ Edit Project with no Robots
-    ☐ Form With No Errors
-
-
-    ☐ Ensure full functionality
-    ☐ Upload Video
+    ☐ Edit Form With No Errors?
+    ☐ Update Form Features
     ☐ BEM + SASS -- update CSS Architecture?
+    ☐ Upload Video
     
     ☐ Extra Credit (If Time Permits)

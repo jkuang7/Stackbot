@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Navbar from "../Navbar";
 import { Link } from "react-router-dom";
-import { fetchProject } from "../../redux/singleProject";
+import { fetchProject, toggleComplete } from "../../redux/singleProject";
 import { fetchRobotsByProjectId } from "../../redux/robots";
 import RobotCard from "../Robots/RobotCard";
 
@@ -14,7 +14,7 @@ class SingleProject extends React.Component {
   }
 
   handleComplete(event) {
-    console.log(event.target.value);
+    this.props.toggleComplete(event.target.value, !this.props.project.completed);
   }
 
   componentDidMount() {
@@ -42,7 +42,7 @@ class SingleProject extends React.Component {
             onClick={this.handleComplete}
             value={project.id}
           >
-            Mark Complete
+            Toggle Complete
           </button>
         </div>
       </div>
@@ -101,6 +101,7 @@ const mapDispatch = (dispatch) => {
   return {
     fetchProject: (id) => dispatch(fetchProject(id)),
     fetchRobotsByProjectId: (id) => dispatch(fetchRobotsByProjectId(id)),
+    toggleComplete: (id, completed) => dispatch(toggleComplete(id, completed))
   };
 };
 

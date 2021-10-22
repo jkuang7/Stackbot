@@ -51,7 +51,19 @@ export const updateProject = (project, history) => {
     try {
       const { data } = await Axios.put(`/api/projects/${project.id}`, project);
       dispatch(setProject(data));
-      history.push("/projects");
+      history.push(`/projects/${project.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const toggleComplete = (id, completed) => {
+  return async (dispatch) => {
+    try {
+      console.log(completed);
+      const { data } = await Axios.put(`/api/projects/${id}`, {completed});
+      dispatch(setProject(data));
     } catch (err) {
       console.log(err);
     }

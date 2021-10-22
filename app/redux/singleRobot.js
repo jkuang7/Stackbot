@@ -71,6 +71,14 @@ export const updateRobot = (robot, history) => {
   };
 };
 
+export const deleteAssignedRobot = (id) => {
+  return async (dispatch) => {
+    await Axios.delete(`/api/robotprojects/robots/${id}`);
+    const { data } = await Axios.get(`/api/robots/${id}`);
+    dispatch(setRobot(data));
+  }
+}
+
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
 export default function robotReducer(state = {}, action) {

@@ -1,26 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { deleteRobot } from "../../redux/singleRobot";
-import { fetchRobots } from "../../redux/robots";
-import { deleteAssignedRobot } from "../../redux/singleRobot";
-import { fetchRobotsByProjectId } from "../../redux/robots";
+import { deleteRobot, deleteAssignedRobot } from "../../redux/singleRobot";
+import { fetchRobots, fetchRobotsByProjectId } from "../../redux/robots";
 
 class RobotCard extends React.Component {
   constructor() {
     super();
-    this.state = {
-      removeRobot: false
-    };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUnassign = this.handleUnassign.bind(this);
   }
 
   componentDidUpdate(prevProps) {
-    const { robot, project } = this.props;
+    const { robot, project, robotToBeRemoved } = this.props;
     if (this.props.xBtnBool && robot !== prevProps.robot) {
       this.props.fetchRobots();
-    } else if(!this.props.xBtnBool && robot !== prevProps.robot) {
+    } else if (
+      !this.props.xBtnBool &&
+      robotToBeRemoved !== prevProps.robotToBeRemoved
+    ) {
       this.props.fetchRobotsByProjectId(project.id);
     }
   }
@@ -33,13 +31,15 @@ class RobotCard extends React.Component {
     this.props.deleteRobot(event.target.value);
   }
 
-  robotCardImg(robot) {
+  robotCardImg() {
+    const { robot } = this.props;
     return (
       <img className="robotCard__img" src={robot.imageUrl} alt="IMAGE"></img>
     );
   }
 
-  robotButtons(robot) {
+  robotButtons() {
+    const { robot } = this.props;
     return this.props.xBtnBool ? (
       <button type="button" onClick={this.handleDelete} value={robot.id}>
         x
@@ -56,15 +56,14 @@ class RobotCard extends React.Component {
     );
   }
 
-  robotCardText(robot) {
-    let { projects } = robot;
-    projects = projects || [];
+  robotCardText() {
+    let { robot } = this.props;
     return (
       <div className="robotCard__text">
         <Link to={`/robots/${robot.id}`}>
           <h1>{robot.name}</h1>
         </Link>
-        <p>{`Projects: ${projects.length}`}</p>
+        <p>{`Projects: ${robot.projects.length}`}</p>
         <p>{`Fuel Type: ${robot.fuelType}`}</p>
         <p>{`Fuel Level: ${robot.fuelLevel}`}</p>
         {this.robotButtons(robot)}
@@ -73,17 +72,11 @@ class RobotCard extends React.Component {
   }
 
   render() {
-    let { someRobot } = this.props;
-    let { removeRobot } = this.state;
-    someRobot = someRobot || {};
-    removeRobot = removeRobot || false;
-    return !removeRobot ? (
+    return (
       <div className="robotCard">
-        {this.robotCardImg(someRobot)}
-        {this.robotCardText(someRobot)}
+        {this.robotCardImg()}
+        {this.robotCardText()}
       </div>
-    ) : (
-      <p></p>
     );
   }
 }
@@ -91,8 +84,7 @@ class RobotCard extends React.Component {
 const mapState = (state) => {
   return {
     project: state.project,
-    robots: state.robots,
-    robot: state.robot,
+    robotToBeRemoved: state.robot,
   };
 };
 

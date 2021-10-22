@@ -22,7 +22,14 @@ router.get("/project/:id", async (req, res, next) => {
 
     const robots = await Promise.all(
       robotProjects.map(async (robotProject) => {
-        const robot = await Robot.findByPk(robotProject.robotId);
+        const robot = await Robot.findOne({
+          where: {
+            id: robotProject.robotId
+          },
+          include: {
+            model: Project
+          }
+        });
         return robot;
       })
     );

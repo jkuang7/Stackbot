@@ -1,7 +1,6 @@
 import React from "react";
 import { deleteAssignedProject } from "../../redux/singleProject";
 import { connect } from "react-redux";
-import { fetchRobotWithProjects } from "../../redux/singleRobot";
 
 class AssignedProjectCard extends React.Component {
   constructor() {
@@ -11,12 +10,12 @@ class AssignedProjectCard extends React.Component {
 
   handleUnassign(event) {
     this.props.deleteAssignedProject(event.target.value);
-    this.props.fetchRobotWithProjects(this.props.robot.id);
   }
 
   render() {
     let { project } = this.props;
     project = project || {};
+    console.log(this.props);
     return (
       <div>
         <p>{project.title}</p>
@@ -40,7 +39,6 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     deleteAssignedProject: (id) => dispatch(deleteAssignedProject(id)),
-    fetchRobotWithProjects: (id) => dispatch(fetchRobotWithProjects(id)),
   };
 };
 

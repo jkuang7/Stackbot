@@ -27,9 +27,7 @@ export const fetchRobot = (id) => {
 export const fetchRobotWithProjects = (id) => {
   return async (dispatch) => {
     try {
-      const { data: robot } = await Axios.get(`/api/robots/${id}`);
-      const { data: projects } = await Axios.get(`/api/projects/robot/${id}`);
-      robot.projects = projects;
+      const { data: robot } = await Axios.get(`/api/robots/project/${id}`);
       dispatch(setRobot(robot));
     } catch (err) {
       console.log(err);

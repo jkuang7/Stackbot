@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../Navbar";
 import { connect } from "react-redux";
 import { fetchRobot, updateRobot } from "../../redux/singleRobot";
-import AllAssignedProjectRows from "./AllAssignedProjectRows";
+
 
 export class RobotEdit extends React.Component {
   constructor() {

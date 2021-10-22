@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Project, Robot } = require("../db/index");
+const { Project, Robot, RobotProject } = require("../db/index");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -25,7 +25,34 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.get("/robot/:id", async (req, res, next) => {
-  //Gets the list of projects by robot id
+  try {
+    const robotProjects = await RobotProject.findAll({
+      where: {
+        robotId: req.params.id,
+      },
+    });
+
+    const projects = await Promise.all(
+      robotProjects.map(async (robotProject) => {
+        const project = await Project.findOne({
+          where: {
+            id: robotProject.projectId
+          },
+          include: {
+            model: Robot
+          }
+        });
+        return project;
+      })
+    );
+    
+    res.json(projects);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/robot/:id", async (req, res, next) => {
   try {
     const robot = await Robot.findOne({
       where: {

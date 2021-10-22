@@ -63,7 +63,6 @@ export const updateRobot = (robot, history) => {
     try {
       const { data } = await Axios.put(`/api/robots/${robot.id}`, robot);
       dispatch(setRobot(robot));
-      history.push("/robots");
     } catch (err) {
       console.log(err);
     }

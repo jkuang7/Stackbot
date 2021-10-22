@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../Navbar";
 import { connect } from "react-redux";
 import { fetchRobot, updateRobot } from "../../redux/singleRobot";
+import { fetchProjectsByRobotId } from "../../redux/projects";
 
 export class RobotEdit extends React.Component {
   constructor() {
@@ -21,6 +22,7 @@ export class RobotEdit extends React.Component {
 
   componentDidMount() {
     this.props.fetchRobot(this.props.match.params.id);
+    this.props.fetchProjectsByRobotId(this.props.match.params.id);
   }
 
   componentDidUpdate(prevProps) {
@@ -104,9 +106,9 @@ export class RobotEdit extends React.Component {
       </form>
     );
   }
-  projects() {
-    let { robot } = this.state;
-    robot = robot || {};
+
+  selectProject() {
+    const {robot} = this.state;
     return (
       <div>
         <h3>Projects Assigned to {robot.name}</h3>
@@ -115,19 +117,29 @@ export class RobotEdit extends React.Component {
         <select name="projects" id="projects">
           <option value="">Select Project...</option>
         </select>
+      </div>
+    );
+  }
+
+  assignedProjects() {
+    let { robot } = this.state;
+    robot = robot || {};
+    return (
+      <div className="flex-row">
+        {this.selectProject()}
         <button type="button">Add to Robot</button>
       </div>
     );
   }
 
   render() {
-    const { robot } = this.state;
+    console.log(this.props);
     return (
       <div>
         <Navbar />
         <h1>Edit Robot</h1>
         {this.robotForm()}
-        {this.projects()}
+        {this.assignedProjects()}
       </div>
     );
   }
@@ -136,6 +148,7 @@ export class RobotEdit extends React.Component {
 const mapState = (state) => {
   return {
     robot: state.robot,
+    projects: state.projects,
   };
 };
 
@@ -143,6 +156,7 @@ const mapDispatch = (dispatch, { history }) => {
   return {
     fetchRobot: (id) => dispatch(fetchRobot(id)),
     updateRobot: (robot) => dispatch(updateRobot(robot, history)),
+    fetchProjectsByRobotId: (id) => dispatch(fetchProjectsByRobotId(id)),
   };
 };
 

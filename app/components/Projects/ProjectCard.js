@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {
-  deleteProject,
-  deleteAssignedProject,
-} from "../../redux/singleProject";
+import { deleteProject } from "../../redux/singleProject";
 import { fetchProjects, fetchProjectsByRobotId } from "../../redux/projects";
+import { deleteRobotProject } from "../../redux/robotProjects";
 
 class ProjectCard extends React.Component {
   constructor() {
@@ -16,24 +14,23 @@ class ProjectCard extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { projectToBeRemoved, robot } = this.props;
+    const { robotProject, robot } = this.props;
     if (
       this.props.xBtnBool &&
-      projectToBeRemoved !== prevProps.projectToBeRemoved
+      robotProject !== prevProps.robotProject
     ) {
       this.props.fetchProjects();
     } else if (
       !this.props.xBtnBool &&
-      projectToBeRemoved !== prevProps.projectToBeRemoved
+      robotProject !== prevProps.robotProject
     ) {
-      console.log("Testing?")
       this.props.fetchProjectsByRobotId(robot.id);
     }
   }
 
   handleUnassign(event) {
-    
-    this.props.deleteAssignedProject(event.target.value);
+    const { robot, project } = this.props;
+    this.props.deleteRobotProject(robot.id, project.id);
   }
 
   handleDelete(event) {
@@ -48,7 +45,7 @@ class ProjectCard extends React.Component {
       </button>
     ) : (
       <div>
-        <button type="button" value={project.id} onClick={this.handleUnassign}>
+        <button type="button" onClick={this.handleUnassign}>
           Unassign
         </button>
       </div>
@@ -79,7 +76,7 @@ class ProjectCard extends React.Component {
 const mapState = (state) => {
   return {
     robot: state.robot,
-    projectToBeRemoved: state.project,
+    robotProject: state.robotProject
   };
 };
 
@@ -87,8 +84,9 @@ const mapDispatch = (dispatch) => {
   return {
     deleteProject: (id) => dispatch(deleteProject(id)),
     fetchProjects: () => dispatch(fetchProjects()),
-    deleteAssignedProject: (id) => dispatch(deleteAssignedProject(id)),
-    fetchProjectsByRobotId: (id) => dispatch(fetchProjectsByRobotId(id))
+    deleteRobotProject: (robotId, projectId) =>
+    dispatch(deleteRobotProject(robotId, projectId)),
+    fetchProjectsByRobotId: (id) => dispatch(fetchProjectsByRobotId(id)),
   };
 };
 

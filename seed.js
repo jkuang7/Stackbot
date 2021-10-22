@@ -14,6 +14,24 @@ const randNum = (num, returnDecimal = false) => {
   }
 };
 
+const randNumArr = (num, numArray, lenOfArr) => {
+  //returns an array of random numbers (all unique) from 0 to num excluding num
+  //length is how many arrays do you want to generate?
+  const map = new Map();
+  for (let i = 0; i < numArray; i++) {
+    map.set(i, []);
+  }
+  for (let [key, value] of map) {
+    while (value.length < lenOfArr) {
+      const randomNum = Math.floor(Math.random() * num);
+      if (value.indexOf(randomNum) === -1 && randomNum !== key)
+        value.push(randomNum);
+    }
+  }
+
+  return map;
+};
+
 const makeRobots = (len) => {
   const robotsArr = [];
   const fuelType = ["gas", "diesel", "electric"];
@@ -73,15 +91,34 @@ const seed = async () => {
     //Sync Force on DB
     await db.sync({ force: true });
 
-    //Returns Robot and Project Model instances of their respective arrays
+    //Returns an array of Robot and Project Model instances
     const robotsArr = await createRobotsDB(robots);
     const projectsArr = await createProjectsDB(projects);
 
     //Sequelize Magic Methods -- Creating Join Relationships between Robots and Projects
     await Promise.all(
-      robotsArr.map((robot, idx) => {
-        const project = projectsArr[idx];
-        return robot.addProject(project);
+      robotsArr.map((robot) => {
+        const map = randNumArr(robotsArr.length, 10, 4);
+        for (let [key, value] of map) {
+          for (let i = 0; i < value.length; i++) {
+            const idx = value[i];
+            const project = projectsArr[idx];
+            return robot.addProject(project);
+          }
+        }
+      })
+    );
+
+    await Promise.all(
+      projectsArr.map((project) => {
+        const map = randNumArr(projectsArr.length, 10, 4);
+        for (let [key, value] of map) {
+          for (let i = 0; i < value.length; i++) {
+            const idx = value[i];
+            const robot = robotsArr[idx];
+            return project.addRobot(robot);
+          }
+        }
       })
     );
   } catch (err) {

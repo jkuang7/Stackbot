@@ -32,7 +32,7 @@ export class AllRobots extends React.Component {
     return (
       <div className="robots">
         {robots.map((robot) => {
-          return <RobotCard robot={robot} key={robot.id} xBtnBool = {true} />;
+          return <RobotCard someRobot={robot} key={robot.id} xBtnBool = {true} />;
         })}
       </div>
     );

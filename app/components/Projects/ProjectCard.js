@@ -7,8 +7,10 @@ import { fetchProjects } from "../../redux/projects";
 class ProjectCard extends React.Component {
   constructor() {
     super();
+    this.state = {};
     this.handleDelete = this.handleDelete.bind(this);
   }
+
   componentDidUpdate(prevProps) {
     const { deletedProject } = this.props;
     if (deletedProject !== prevProps.deletedProject) {
@@ -40,7 +42,6 @@ class ProjectCard extends React.Component {
 
 const mapState = (state) => {
   return {
-    projects: state.projects,
     deletedProject: state.project,
   };
 };

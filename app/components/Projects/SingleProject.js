@@ -4,10 +4,12 @@ import { fetchProject } from "../../redux/singleProject";
 import Navbar from "../Navbar";
 import AllAssignedRobotCards from "./AllAssignedRobotCards";
 import { Link } from "react-router-dom";
+import { fetchRobotsByProjectId } from "../../redux/robots";
 
 class SingleProject extends React.Component {
   componentDidMount() {
-    this.props.fetchProject(this.props.match.params.id);
+    // this.props.fetchProject(this.props.match.params.id);
+    this.props.fetchRobotsByProjectId(this.props.match.params.id);
   }
 
   projectCardDescription(project) {
@@ -45,7 +47,7 @@ class SingleProject extends React.Component {
         <Navbar />
         <div className="bigCard">{this.projectCard(project)}</div>
         <h2>Robots assigned to this project</h2>
-        <AllAssignedRobotCards robots={project.robots} />
+        <AllAssignedRobotCards project={project} />
       </div>
     );
   }
@@ -54,12 +56,14 @@ class SingleProject extends React.Component {
 const mapState = (state) => {
   return {
     project: state.project,
+    robots: state.robots
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     fetchProject: (id) => dispatch(fetchProject(id)),
+    fetchRobotsByProjectId: (id) => dispatch(fetchRobotsByProjectId(id))
   };
 };
 

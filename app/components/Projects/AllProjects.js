@@ -28,7 +28,7 @@ export class AllProjects extends React.Component {
     return (
       <div className="projects">
         {projects.map((project) => {
-          return <ProjectCard project={project} key={project.id} />;
+          return <ProjectCard key={project.id} project={project} />;
         })}
       </div>
     );

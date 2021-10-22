@@ -4,23 +4,29 @@ import { connect } from "react-redux";
 import { deleteRobot } from "../../redux/singleRobot";
 import { fetchRobots } from "../../redux/robots";
 import { deleteAssignedRobot } from "../../redux/singleRobot";
+import { fetchRobotsByProjectId } from "../../redux/robots";
 
 class RobotCard extends React.Component {
   constructor() {
     super();
+    this.state = {
+      removeRobot: false
+    };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUnassign = this.handleUnassign.bind(this);
   }
 
   componentDidUpdate(prevProps) {
-    const { removeRobot } = this.props;
-    if (this.props.xBtnBool && removeRobot !== prevProps.removeRobot) {
+    const { robot, project } = this.props;
+    if (this.props.xBtnBool && robot !== prevProps.robot) {
       this.props.fetchRobots();
+    } else if(!this.props.xBtnBool && robot !== prevProps.robot) {
+      this.props.fetchRobotsByProjectId(project.id);
     }
   }
 
   handleUnassign(event) {
-    console.log(event.target.value);
+    this.props.deleteAssignedRobot(event.target.value);
   }
 
   handleDelete(event) {
@@ -67,20 +73,26 @@ class RobotCard extends React.Component {
   }
 
   render() {
-    let { robot } = this.props;
-    robot = robot || {};
-    return (
+    let { someRobot } = this.props;
+    let { removeRobot } = this.state;
+    someRobot = someRobot || {};
+    removeRobot = removeRobot || false;
+    return !removeRobot ? (
       <div className="robotCard">
-        {this.robotCardImg(robot)}
-        {this.robotCardText(robot)}
+        {this.robotCardImg(someRobot)}
+        {this.robotCardText(someRobot)}
       </div>
+    ) : (
+      <p></p>
     );
   }
 }
 
 const mapState = (state) => {
   return {
-    removeRobot: state.robot,
+    project: state.project,
+    robots: state.robots,
+    robot: state.robot,
   };
 };
 
@@ -89,6 +101,7 @@ const mapDispatch = (dispatch) => {
     deleteRobot: (id) => dispatch(deleteRobot(id)),
     fetchRobots: () => dispatch(fetchRobots()),
     deleteAssignedRobot: (id) => dispatch(deleteAssignedRobot(id)),
+    fetchRobotsByProjectId: (id) => dispatch(fetchRobotsByProjectId(id)),
   };
 };
 

@@ -75,6 +75,7 @@ export const deleteAssignedRobot = (id) => {
   return async (dispatch) => {
     await Axios.delete(`/api/robotprojects/robots/${id}`);
     const { data } = await Axios.get(`/api/robots/${id}`);
+    data.deleted = true;
     dispatch(setRobot(data));
   }
 }

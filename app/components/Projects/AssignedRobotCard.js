@@ -7,7 +7,7 @@ class AssignedRobotCard extends React.Component {
     robot = robot || {};
     return (
       <div className="smallerDiv">
-        {robot !== {} ? <RobotCard robot={robot}/> : <p></p>}
+        {robot !== {} ? <RobotCard someRobot={robot}/> : <p></p>}
       </div>
     );
   }

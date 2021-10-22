@@ -28,7 +28,9 @@ export class AllProjects extends React.Component {
     return (
       <div className="projects">
         {projects.map((project) => {
-          return <ProjectCard key={project.id} project={project} xBtnBool={true} />;
+          return (
+            <ProjectCard key={project.id} project={project} xBtnBool={true} />
+          );
         })}
       </div>
     );
@@ -41,7 +43,11 @@ export class AllProjects extends React.Component {
       <div>
         <Navbar />
         {this.navProjectForm()}
-        {this.allProjects(projects)}
+        {projects.length !== 0 ? (
+          this.allProjects(projects)
+        ) : (
+          <p>There are no projects registered in the database.</p>
+        )}
       </div>
     );
   }

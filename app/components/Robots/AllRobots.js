@@ -25,11 +25,11 @@ export class AllRobots extends React.Component {
   }
 
   allRobots() {
-    const {robots} = this.props;
+    const { robots } = this.props;
     return (
       <div className="robots">
         {robots.map((robot) => {
-          return <RobotCard key={robot.id} robot={robot} xBtnBool = {true} />;
+          return <RobotCard key={robot.id} robot={robot} xBtnBool={true} />;
         })}
       </div>
     );
@@ -37,11 +37,16 @@ export class AllRobots extends React.Component {
 
   render() {
     console.log(this.props);
+    const { robots } = this.props;
     return (
       <div>
         <Navbar />
         {this.navRobotForm()}
-        {this.allRobots()}
+        {robots.length !== 0 ? (
+          this.allRobots()
+        ) : (
+          <p>There are no robots registered in the database.</p>
+        )}
       </div>
     );
   }

@@ -2,10 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchRobot } from "../../redux/singleRobot";
 import Navbar from "../Navbar";
-import AllAssignedProjectCards from "./AllAssignedProjectCards";
 import { Link } from "react-router-dom";
 import { fetchProjectsByRobotId } from "../../redux/projects";
-import ProjectCard from "../Projects/ProjectCard"
+import ProjectCard from "../Projects/ProjectCard";
 
 class SingleRobot extends React.Component {
   componentDidMount() {
@@ -50,7 +49,7 @@ class SingleRobot extends React.Component {
         {projects.map((project) => {
           return (
             <div className="smallerDiv" key={project.id}>
-              <ProjectCard project={project} xBtnBool={false}/>
+              <ProjectCard project={project} xBtnBool={false} />
             </div>
           );
         })}
@@ -69,7 +68,6 @@ class SingleRobot extends React.Component {
         <div className="bigCard">{this.robotCard(robot)}</div>
         <h2>Projects assigned to {robot.name}</h2>
         {this.allAssignedProjectCards()}
-        {/* <AllAssignedProjectCards projects={robot.projects} /> */}
       </div>
     );
   }

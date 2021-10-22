@@ -3,7 +3,6 @@ import Navbar from "../Navbar";
 import { connect } from "react-redux";
 import { createRobot } from "../../redux/singleRobot";
 
-
 // Notice that we're exporting the AllRobots component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
 // bottom) is connected to Redux. Our tests should cover _both_ cases.

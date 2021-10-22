@@ -116,7 +116,6 @@ export class RobotEdit extends React.Component {
           <option value="">Select Project...</option>
         </select>
         <button type="button">Add to Robot</button>
-        <AllAssignedProjectRows robot={robot} />
       </div>
     );
   }
@@ -128,7 +127,7 @@ export class RobotEdit extends React.Component {
         <Navbar />
         <h1>Edit Robot</h1>
         {this.robotForm()}
-        {/* {this.projects()} */}
+        {this.projects()}
       </div>
     );
   }

@@ -24,7 +24,14 @@ export const fetchRobots = () => {
 };
 
 export const fetchRobotsByProjectId = () => {
-  
+  return async (dispatch) => {
+    try {
+      const {data} = await Axios.get("/api/robots/project/:id");
+      
+    } catch(err) {
+      console.log(err);
+    }
+  }
 }
 
 // Take a look at app/redux/index.js to see where this reducer is

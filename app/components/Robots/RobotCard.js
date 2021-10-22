@@ -12,8 +12,11 @@ class RobotCard extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { robot, project, robotToBeRemoved } = this.props;
-    if (this.props.xBtnBool && robot !== prevProps.robot) {
+    const { robotToBeRemoved, project } = this.props;
+    if (
+      this.props.xBtnBool &&
+      robotToBeRemoved !== prevProps.robotToBeRemoved
+    ) {
       this.props.fetchRobots();
     } else if (
       !this.props.xBtnBool &&
@@ -66,7 +69,7 @@ class RobotCard extends React.Component {
         <p>{`Projects: ${robot.projects.length}`}</p>
         <p>{`Fuel Type: ${robot.fuelType}`}</p>
         <p>{`Fuel Level: ${robot.fuelLevel}`}</p>
-        {this.robotButtons(robot)}
+        {this.robotButtons()}
       </div>
     );
   }

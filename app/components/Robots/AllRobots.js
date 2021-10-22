@@ -5,10 +5,6 @@ import { fetchRobots } from "../../redux/robots";
 import RobotCard from "./RobotCard";
 import Navbar from "../Navbar";
 
-//CSS Variables
-const flexRow = "flex-row";
-const spaceBetween = "space-between";
-
 // Notice that we're exporting the AllRobots component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
@@ -28,24 +24,23 @@ export class AllRobots extends React.Component {
     );
   }
 
-  allRobots(robots) {
+  allRobots() {
+    const {robots} = this.props;
     return (
       <div className="robots">
         {robots.map((robot) => {
-          return <RobotCard someRobot={robot} key={robot.id} xBtnBool = {true} />;
+          return <RobotCard key={robot.id} robot={robot} xBtnBool = {true} />;
         })}
       </div>
     );
   }
 
   render() {
-    let { robots } = this.props;
-    robots = robots || [];
     return (
       <div>
         <Navbar />
         {this.navRobotForm()}
-        {this.allRobots(robots)}
+        {this.allRobots()}
       </div>
     );
   }

@@ -14,11 +14,8 @@ class ProjectCard extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { robotProject, robot } = this.props;
-    if (
-      this.props.xBtnBool &&
-      robotProject !== prevProps.robotProject
-    ) {
+    const { robotProject, projectToRemove, robot } = this.props;
+    if (this.props.xBtnBool && projectToRemove !== prevProps.projectToRemove) {
       this.props.fetchProjects();
     } else if (
       !this.props.xBtnBool &&
@@ -68,7 +65,6 @@ class ProjectCard extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return <div className="projectCard">{this.projectCardText()}</div>;
   }
 }
@@ -76,7 +72,8 @@ class ProjectCard extends React.Component {
 const mapState = (state) => {
   return {
     robot: state.robot,
-    robotProject: state.robotProject
+    projectToRemove: state.project,
+    robotProject: state.robotProject,
   };
 };
 
@@ -85,7 +82,7 @@ const mapDispatch = (dispatch) => {
     deleteProject: (id) => dispatch(deleteProject(id)),
     fetchProjects: () => dispatch(fetchProjects()),
     deleteRobotProject: (robotId, projectId) =>
-    dispatch(deleteRobotProject(robotId, projectId)),
+      dispatch(deleteRobotProject(robotId, projectId)),
     fetchProjectsByRobotId: (id) => dispatch(fetchProjectsByRobotId(id)),
   };
 };

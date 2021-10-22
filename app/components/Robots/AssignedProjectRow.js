@@ -15,7 +15,6 @@ class AssignedProjectCard extends React.Component {
   render() {
     let { project } = this.props;
     project = project || {};
-    console.log(this.props);
     return (
       <div>
         <p>{project.title}</p>

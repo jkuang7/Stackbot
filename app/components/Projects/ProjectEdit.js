@@ -115,7 +115,6 @@ export class ProjectEdit extends React.Component {
   }
 
   render() {
-    console.log(this.props.deadline);
     return (
       <div>
         <Navbar />

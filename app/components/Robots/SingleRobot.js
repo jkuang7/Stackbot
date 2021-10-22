@@ -63,7 +63,6 @@ class SingleRobot extends React.Component {
   render() {
     let { robot } = this.props;
     robot = robot || {};
-    console.log(this.props);
     return (
       <div>
         <Navbar />

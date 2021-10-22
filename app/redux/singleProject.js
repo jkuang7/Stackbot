@@ -61,7 +61,6 @@ export const updateProject = (project, history) => {
 export const toggleComplete = (id, completed) => {
   return async (dispatch) => {
     try {
-      console.log(completed);
       const { data } = await Axios.put(`/api/projects/${id}`, {completed});
       dispatch(setProject(data));
     } catch (err) {
@@ -70,13 +69,7 @@ export const toggleComplete = (id, completed) => {
   };
 };
 
-export const deleteAssignedProject = (id) => {
-  return async (dispatch) => {
-    await Axios.delete(`/api/robotprojects/projects/${id}`);
-    const { data } = await Axios.get(`/api/projects/${id}`);
-    dispatch(setProject(data));
-  }
-}
+
 
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers

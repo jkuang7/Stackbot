@@ -49,9 +49,6 @@ class RobotCard extends React.Component {
       </button>
     ) : (
       <div>
-        <button type="button" value={robot.id}>
-          Mark Complete
-        </button>
         <button type="button" value={robot.id} onClick={this.handleUnassign}>
           Unassign
         </button>

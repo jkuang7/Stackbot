@@ -10,6 +10,11 @@ class SingleProject extends React.Component {
   constructor() {
     super();
     this.allAssignedRobotCards = this.allAssignedRobotCards.bind(this);
+    this.handleComplete = this.handleComplete.bind(this);
+  }
+
+  handleComplete(event) {
+    console.log(event.target.value);
   }
 
   componentDidMount() {
@@ -28,9 +33,18 @@ class SingleProject extends React.Component {
         <p>{`Deadline: ${project.deadline}`}</p>
         <p>{`Completed: ${project.completed}`}</p>
         <p>{`Priority: ${project.priority}`}</p>
-        <Link to={`/projects/edit/${project.id}`}>
-          <button type="button">Edit</button>
-        </Link>
+        <div>
+          <Link to={`/projects/edit/${project.id}`}>
+            <button type="button">Edit</button>
+          </Link>
+          <button
+            type="button"
+            onClick={this.handleComplete}
+            value={project.id}
+          >
+            Mark Complete
+          </button>
+        </div>
       </div>
     );
   }
@@ -52,7 +66,7 @@ class SingleProject extends React.Component {
         {robots.map((robot) => {
           return (
             <div className="smallerDiv" key={robot.id}>
-              <RobotCard robot={robot} xBtnBool={false}/>
+              <RobotCard robot={robot} xBtnBool={false} />
             </div>
           );
         })}

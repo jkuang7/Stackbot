@@ -8,6 +8,7 @@ class RobotCard extends React.Component {
   constructor() {
     super();
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleUnassign = this.handleUnassign.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -15,6 +16,10 @@ class RobotCard extends React.Component {
     if (deletedRobot !== prevProps.deletedRobot) {
       this.props.fetchRobots();
     }
+  }
+
+  handleUnassign(event) {
+    console.log(event.target.value);
   }
 
   handleDelete(event) {
@@ -38,9 +43,24 @@ class RobotCard extends React.Component {
         <p>{`Projects: ${projects.length}`}</p>
         <p>{`Fuel Type: ${robot.fuelType}`}</p>
         <p>{`Fuel Level: ${robot.fuelLevel}`}</p>
-        <button type="button" onClick={this.handleDelete} value={robot.id}>
-          x
-        </button>
+        {this.props.xBtnBool ? (
+          <button type="button" onClick={this.handleDelete} value={robot.id}>
+            x
+          </button>
+        ) : (
+          <div>
+            <button type="button" value={robot.id}>
+              Mark Complete
+            </button>
+            <button
+              type="button"
+              value={robot.id}
+              onClick={this.handleUnassign}
+            >
+              Unassign
+            </button>
+          </div>
+        )}
       </div>
     );
   }
@@ -59,7 +79,6 @@ class RobotCard extends React.Component {
 
 const mapState = (state) => {
   return {
-    robots: state.robots,
     deletedRobot: state.robot,
   };
 };

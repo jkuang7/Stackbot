@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { deleteRobot } from "../../redux/singleRobot";
 import { fetchRobots } from "../../redux/robots";
 import { deleteAssignedRobot } from "../../redux/singleRobot";
-import { fetchProject } from "../../redux/singleProject";
-
 
 class RobotCard extends React.Component {
   constructor() {
@@ -15,14 +13,14 @@ class RobotCard extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { removeRobot, project } = this.props;
-    if (removeRobot !== prevProps.removeRobot) {
+    const { removeRobot } = this.props;
+    if (this.props.xBtnBool && removeRobot !== prevProps.removeRobot) {
       this.props.fetchRobots();
     }
   }
 
   handleUnassign(event) {
-    this.props.deleteAssignedRobot(event.target.value);
+    console.log(event.target.value);
   }
 
   handleDelete(event) {
@@ -71,7 +69,6 @@ class RobotCard extends React.Component {
   render() {
     let { robot } = this.props;
     robot = robot || {};
-    console.log(this.props);
     return (
       <div className="robotCard">
         {this.robotCardImg(robot)}
@@ -84,7 +81,6 @@ class RobotCard extends React.Component {
 const mapState = (state) => {
   return {
     removeRobot: state.robot,
-    project: state.project
   };
 };
 
@@ -92,7 +88,7 @@ const mapDispatch = (dispatch) => {
   return {
     deleteRobot: (id) => dispatch(deleteRobot(id)),
     fetchRobots: () => dispatch(fetchRobots()),
-    deleteAssignedRobot: (id) => dispatch(deleteAssignedRobot(id))
+    deleteAssignedRobot: (id) => dispatch(deleteAssignedRobot(id)),
   };
 };
 

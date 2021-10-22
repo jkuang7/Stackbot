@@ -3,7 +3,6 @@ import Navbar from "../Navbar";
 import { connect } from "react-redux";
 import { fetchRobot, updateRobot } from "../../redux/singleRobot";
 
-
 export class RobotEdit extends React.Component {
   constructor() {
     super();

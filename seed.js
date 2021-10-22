@@ -96,6 +96,8 @@ const seed = async () => {
     const projectsArr = await createProjectsDB(projects);
 
     //Sequelize Magic Methods -- Creating Join Relationships between Robots and Projects
+
+    //Seeding Join Table from Robots to Projects
     await Promise.all(
       robotsArr.map((robot) => {
         const map = randNumArr(robotsArr.length, 10, 4);
@@ -109,6 +111,7 @@ const seed = async () => {
       })
     );
 
+    //Seeing Join Table from Projects to Robots
     await Promise.all(
       projectsArr.map((project) => {
         const map = randNumArr(projectsArr.length, 10, 4);

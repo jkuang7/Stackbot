@@ -1,17 +1,40 @@
 Todo:
   ✔ Refactoring File Structure @started(21-10-22 17:25) @done(21-10-22 17:30) @lasted(5m21s)
+  ###Saturday
   ☐ Edit Robot Requires full view -> Edit Robot with no Projects
+    ☐ ProjectRows View
+      - Should grab projects tied to Robot.id and fill it with the respective projects formatted with...
+        - project.title
+        - project.completed
+        - project.deadline
+        - project.priority
+        - Should also include unassign from robot (We can utilize ProjectCard for this)
+    ☐ Select Project... Should grab projects tied to Robot.id and fill it with its respective
+      - Project Title
+      - value: projectId
+    ☐ Add To Robot should Grab the currently selected Project and put /api/robotprojects/ with robotId and projectId
+      - It should update the ProjectRows View
+        
   ☐ Edit Project Requires full view -> Edit Project with no Robots
-  ☐ Ensure full functionality
+    ☐ RobotRows View
+    - Should grab projects tied to Project.id and fill it with the respective robots formatted with...
+      - robot.imageUrl {robot.name}
+      - unassign from project btn (Utilize RobotCard for this)
+  ☐ Select Robot... Should grab robots tied to project.id and fill it with its respective
+    - Robot Title
+    - value: robotId
+  ☐ Add To Project should Grab the currently selected Robot and apply a put route on /api/robotprojects/ with robotId and projectId
+    - It should update the ProjectRows View
+☐ Ensure full functionality and Refactor Code
   
 
-
+☐ Sunday
   - Minor Changes
     ✔ Robot Listing Blank Slate @done(21-10-22 17:23)
     ✔ Project Listing Blank Slate @done(21-10-22 17:23)
-    ☐ Edit Form With No Errors?
     ☐ Update Form Features
-    ☐ BEM + SASS -- update CSS Architecture?
-    ☐ Upload Video
-    
+    ☐ Edit Form With No Errors
+    ☐ Verify Rubric, Plan Content, and Upload Video
+
+    ☐ BEM + SASS -- update CSS Architecture -- to improve project?
     ☐ Extra Credit (If Time Permits)

@@ -111,7 +111,7 @@ const seed = async () => {
       })
     );
 
-    //Seeing Join Table from Projects to Robots
+    //Seeding Join Table from Projects to Robots
     await Promise.all(
       projectsArr.map((project) => {
         const map = randNumArr(projectsArr.length, 10, 4);

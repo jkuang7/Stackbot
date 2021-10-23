@@ -2,7 +2,7 @@
 // with your models, for which you'll find some blank files in this directory:
 
 const { Sequelize } = require("sequelize");
-const {Op} = require("sequelize");
+const { Op } = require("sequelize");
 const db = require("./database");
 const Project = require("./project");
 const Robot = require("./robot");
@@ -15,6 +15,7 @@ const Robot = require("./robot");
 const RobotProject = db.define("RobotProjects", {}, { timestamps: true });
 
 Project.belongsToMany(Robot, { through: "RobotProjects" });
+Robot.belongsToMany(Project, { through: "RobotProjects" });
 
 //Sequelize Magic Methods
 // console.log(Object.keys(Robot.prototype));

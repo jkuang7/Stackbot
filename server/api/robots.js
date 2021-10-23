@@ -24,16 +24,16 @@ router.get("/project/:id", async (req, res, next) => {
       robotProjects.map(async (robotProject) => {
         const robot = await Robot.findOne({
           where: {
-            id: robotProject.robotId
+            id: robotProject.robotId,
           },
           include: {
-            model: Project
-          }
+            model: Project,
+          },
         });
         return robot;
       })
     );
-    
+
     res.json(robots);
   } catch (err) {
     next(err);

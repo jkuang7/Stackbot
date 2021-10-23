@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Project, Robot, RobotProject } = require("../db/index");
+const Sequelize = require("sequelize");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -25,6 +26,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.get("/robot/:id", async (req, res, next) => {
+  //Return all projects that match robotId
   try {
     const robotProjects = await RobotProject.findAll({
       where: {
@@ -54,7 +56,7 @@ router.get("/robot/:id", async (req, res, next) => {
 
 router.get("/notrobot/:id", async (req, res, next) => {
   try {
-    //
+    
   } catch (err) {
     next(err);
   }

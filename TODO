@@ -13,7 +13,8 @@ Todo:
       - Project Title
       - value: projectId
 
-      - Add a prototype method via sequelize to find projects not related to robot
+      - Search for all projects related to robot => convert into an array
+      - Search for all projects not in the array
       - Thunk Creator that searches for all projects not related to robot
 
     ☐ Add To Robot should Grab the currently selected Project and put /api/robotprojects/ with robotId and projectId

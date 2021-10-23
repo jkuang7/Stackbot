@@ -5,6 +5,7 @@ import { fetchRobot, updateRobot } from "../../redux/singleRobot";
 import { fetchProjectsByRobotId } from "../../redux/projects";
 import ProjectCard from "../Projects/ProjectCard";
 import { addRobotProject } from "../../redux/robotProjects";
+import { fetchProjects } from "../../redux/projects";
 
 export class RobotEdit extends React.Component {
   constructor() {
@@ -21,6 +22,7 @@ export class RobotEdit extends React.Component {
     this.handleSave = this.handleSave.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleAddRobot = this.handleAddRobot.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   componentDidMount() {
@@ -117,13 +119,17 @@ export class RobotEdit extends React.Component {
     );
   }
 
+  handleSelect() {
+    this.props.fetchProjects();
+  }
+
   selectProject() {
     const { projects } = this.props;
     return (
       <div>
         <form onSubmit={this.handleAddRobot}>
           <label htmlFor="projects"></label>
-          <select name="projects" id="projects">
+          <select name="projects" id="projects" onClick={this.handleSelect}>
             <option value="">Select Project...</option>
             {projects.map((project) => {
               return (
@@ -165,6 +171,7 @@ export class RobotEdit extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <Navbar />
@@ -190,6 +197,9 @@ const mapDispatch = (dispatch, { history }) => {
     fetchProjectsByRobotId: (id) => dispatch(fetchProjectsByRobotId(id)),
     addRobotProject: (robotId, projectId) =>
       dispatch(addRobotProject(robotId, projectId)),
+    fetchProjectsUnrelatedToRobotId: (robotId, projects) =>
+      dispatch(fetchProjectsUnrelatedToRobotId(robotId, projects)),
+    fetchProjects: () => dispatch(fetchProjects()),
   };
 };
 

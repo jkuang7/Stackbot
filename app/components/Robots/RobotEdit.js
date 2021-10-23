@@ -3,6 +3,7 @@ import Navbar from "../Navbar";
 import { connect } from "react-redux";
 import { fetchRobot, updateRobot } from "../../redux/singleRobot";
 import { fetchProjectsByRobotId } from "../../redux/projects";
+import ProjectCard from "../Projects/ProjectCard";
 
 export class RobotEdit extends React.Component {
   constructor() {
@@ -108,15 +109,26 @@ export class RobotEdit extends React.Component {
   }
 
   selectProject() {
-    const {robot} = this.state;
+    const { robot } = this.state;
     return (
       <div>
-        <h3>Projects Assigned to {robot.name}</h3>
         <label htmlFor="projects"></label>
-
         <select name="projects" id="projects">
           <option value="">Select Project...</option>
         </select>
+      </div>
+    );
+  }
+
+  projectRows() {
+    console.log(this.props.projects);
+    let { projects } = this.props;
+
+    return (
+      <div>
+        {projects.map((project) => {
+          return <ProjectCard key={project.id} project={project} xBoolBtn={false} />;
+        })}
       </div>
     );
   }
@@ -125,9 +137,13 @@ export class RobotEdit extends React.Component {
     let { robot } = this.state;
     robot = robot || {};
     return (
-      <div className="flex-row">
-        {this.selectProject()}
-        <button type="button">Add to Robot</button>
+      <div>
+        <h3>Projects Assigned to {robot.name}</h3>
+        <div className="flex-row centerFlex">
+          {this.selectProject()}
+          <button type="button">Add to Robot</button>
+        </div>
+        {this.projectRows()}
       </div>
     );
   }

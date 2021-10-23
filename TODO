@@ -2,7 +2,7 @@ Todo:
   ✔ Refactoring File Structure @started(21-10-22 17:25) @done(21-10-22 17:30) @lasted(5m21s)
   ###Saturday
   ☐ Edit Robot Requires full view -> Edit Robot with no Projects
-    ☐ ProjectRows View
+    ✔ ProjectRows View @started(21-10-22 20:01) @done(21-10-22 20:01) @lasted(1m)
       - Should grab projects tied to Robot.id and fill it with the respective projects formatted with...
         - project.title
         - project.completed

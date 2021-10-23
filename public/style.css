@@ -66,12 +66,18 @@ img {
   flex-direction: column;
 }
 
+
+
 .flex-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.centerFlex {
+  justify-content: center;
 }
 
 .robots,
@@ -112,12 +118,6 @@ img {
   justify-content: space-between;
   border: solid #5b6dcd 3px;
   padding: 1.25rem;
-}
-
-.centerFlex {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .bigCard {

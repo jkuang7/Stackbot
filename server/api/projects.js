@@ -36,16 +36,16 @@ router.get("/robot/:id", async (req, res, next) => {
       robotProjects.map(async (robotProject) => {
         const project = await Project.findOne({
           where: {
-            id: robotProject.projectId
+            id: robotProject.projectId,
           },
           include: {
-            model: Robot
-          }
+            model: Robot,
+          },
         });
         return project;
       })
     );
-    
+
     res.json(projects);
   } catch (err) {
     next(err);
@@ -54,13 +54,11 @@ router.get("/robot/:id", async (req, res, next) => {
 
 router.get("/notrobot/:id", async (req, res, next) => {
   try {
-    const robotProjects = await RobotProject.findAll({
-      where: {}
-    })
-  } catch(err) {
+    //
+  } catch (err) {
     next(err);
   }
-})
+});
 
 router.post("/", async (req, res, next) => {
   try {

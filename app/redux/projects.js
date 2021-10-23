@@ -34,10 +34,10 @@ export const fetchProjectsByRobotId = (id) => {
   };
 };
 
-export const fetchProjectsUnrelatedToRobotId = (id) => {
+export const fetchProjectsUnrelatedToRobotId = (id, projects) => {
   return async (dispatch) => {
     try {
-      const { data } = await Axios.get(`/api/projects/notrobot/${id}`);
+      const { data } = await Axios.get(`/api/projects/notrobot/${id}`, {projects});
       dispatch(setProjects(data));
     } catch (err) {
       console.log(err);

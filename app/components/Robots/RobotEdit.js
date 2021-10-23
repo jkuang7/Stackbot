@@ -109,25 +109,34 @@ export class RobotEdit extends React.Component {
   }
 
   selectProject() {
-    const { robot } = this.state;
+    const { projects } = this.props;
+    console.log(projects);
     return (
       <div>
         <label htmlFor="projects"></label>
         <select name="projects" id="projects">
           <option value="">Select Project...</option>
+          {projects.map((project) => {
+            return (
+              <option key={project.id} value={project.id}>
+                {project.title}
+              </option>
+            );
+          })}
         </select>
       </div>
     );
   }
 
   projectRows() {
-    console.log(this.props.projects);
     let { projects } = this.props;
 
     return (
       <div>
         {projects.map((project) => {
-          return <ProjectCard key={project.id} project={project} xBoolBtn={false} />;
+          return (
+            <ProjectCard key={project.id} project={project} xBoolBtn={false} />
+          );
         })}
       </div>
     );

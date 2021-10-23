@@ -19,6 +19,7 @@ export class RobotEdit extends React.Component {
     };
     this.handleSave = this.handleSave.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleAddRobot = this.handleAddRobot.bind(this);
   }
 
   componentDidMount() {
@@ -47,6 +48,11 @@ export class RobotEdit extends React.Component {
     event.preventDefault();
     const { robot } = this.state;
     this.props.updateRobot(robot);
+  }
+
+  handleAddRobot(event) {
+    event.preventDefault();
+    console.log(event.target.projects.value);
   }
 
   robotForm() {
@@ -110,20 +116,22 @@ export class RobotEdit extends React.Component {
 
   selectProject() {
     const { projects } = this.props;
-    console.log(projects);
     return (
       <div>
-        <label htmlFor="projects"></label>
-        <select name="projects" id="projects">
-          <option value="">Select Project...</option>
-          {projects.map((project) => {
-            return (
-              <option key={project.id} value={project.id}>
-                {project.title}
-              </option>
-            );
-          })}
-        </select>
+        <form onSubmit={this.handleAddRobot}>
+          <label htmlFor="projects"></label>
+          <select name="projects" id="projects">
+            <option value="">Select Project...</option>
+            {projects.map((project) => {
+              return (
+                <option key={project.id} value={project.id}>
+                  {project.title}
+                </option>
+              );
+            })}
+          </select>
+          <input type="submit" value="Add to Robot"></input>
+        </form>
       </div>
     );
   }
@@ -148,17 +156,13 @@ export class RobotEdit extends React.Component {
     return (
       <div>
         <h3>Projects Assigned to {robot.name}</h3>
-        <div className="flex-row centerFlex">
-          {this.selectProject()}
-          <button type="button">Add to Robot</button>
-        </div>
+        <div className="flex-row centerFlex">{this.selectProject()}</div>
         {this.projectRows()}
       </div>
     );
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <Navbar />

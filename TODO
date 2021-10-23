@@ -37,9 +37,14 @@ Todo:
   - Minor Changes
     ✔ Robot Listing Blank Slate @done(21-10-22 17:23)
     ✔ Project Listing Blank Slate @done(21-10-22 17:23)
-    ☐ Update Form Features
-    ☐ Edit Form With No Errors
     ☐ Verify Rubric, Plan Content, and Upload Video
+    ☐ Update Form Features
+    ☐ Edit Form With No Errors?
 
     ☐ BEM + SASS -- update CSS Architecture -- to improve project?
     ☐ Extra Credit (If Time Permits)
+
+
+  ☐ Personal Notes
+    - projects conflict
+    - consider... making a Sequelize get projects request (without relying on redux) which could screw up other components relying on the redux store for single source of truth

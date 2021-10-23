@@ -12,13 +12,27 @@ export const setRobotProject = (robotProject) => {
 };
 
 //Thunks
+export const addRobotProject = (robotId, projectId) => {
+  return async (dispatch) => {
+    try {
+      const { data } = Axios.post(`/api/robotprojects/`, {
+        robotId,
+        projectId,
+      });
+      dispatch(setRobotProject(data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
 export const deleteRobotProject = (robotId, projectId) => {
   return async (dispatch) => {
     try {
       const { data } = await Axios.delete(`/api/robotprojects/`, {
         data: { robotId, projectId },
       });
-      dispatch(setRobotProject({robotId, projectId}));
+      dispatch(setRobotProject({ robotId, projectId }));
     } catch (err) {
       console.log(err);
     }

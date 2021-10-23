@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { fetchRobot, updateRobot } from "../../redux/singleRobot";
 import { fetchProjectsByRobotId } from "../../redux/projects";
 import ProjectCard from "../Projects/ProjectCard";
+import { addRobotProject } from "../../redux/robotProjects";
 
 export class RobotEdit extends React.Component {
   constructor() {
@@ -52,7 +53,9 @@ export class RobotEdit extends React.Component {
 
   handleAddRobot(event) {
     event.preventDefault();
-    console.log(event.target.projects.value);
+    const robotId = this.props.robot.id;
+    const projectId = event.target.projects.value;
+    this.props.addRobotProject(robotId, projectId);
   }
 
   robotForm() {
@@ -138,7 +141,6 @@ export class RobotEdit extends React.Component {
 
   projectRows() {
     let { projects } = this.props;
-
     return (
       <div>
         {projects.map((project) => {
@@ -186,6 +188,8 @@ const mapDispatch = (dispatch, { history }) => {
     fetchRobot: (id) => dispatch(fetchRobot(id)),
     updateRobot: (robot) => dispatch(updateRobot(robot, history)),
     fetchProjectsByRobotId: (id) => dispatch(fetchProjectsByRobotId(id)),
+    addRobotProject: (robotId, projectId) =>
+      dispatch(addRobotProject(robotId, projectId)),
   };
 };
 

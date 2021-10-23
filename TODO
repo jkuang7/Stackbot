@@ -2,16 +2,19 @@ Todo:
   ✔ Refactoring File Structure @started(21-10-22 17:25) @done(21-10-22 17:30) @lasted(5m21s)
   ###Saturday
   ☐ Edit Robot Requires full view -> Edit Robot with no Projects
-    ✔ ProjectRows View @started(21-10-22 20:01) @done(21-10-22 20:01) @lasted(1m)
+    ✔ ProjectRows View @done(21-10-22 20:35)
       - Should grab projects tied to Robot.id and fill it with the respective projects formatted with...
         - project.title
         - project.completed
         - project.deadline
         - project.priority
         - Should also include unassign from robot (We can utilize ProjectCard for this)
-    ☐ Select Project... Should grab projects tied to Robot.id and fill it with its respective
+    ☐ Select Project... Should grab projects NOT tied to Robot.id and fill it with its respective
       - Project Title
       - value: projectId
+
+      - Thunk Creator that searches for all projects not related to robot
+
     ☐ Add To Robot should Grab the currently selected Project and put /api/robotprojects/ with robotId and projectId
       - It should update the ProjectRows View
         

@@ -21,12 +21,23 @@ export const fetchProjects = () => {
       console.log(err);
     }
   };
-}; 
+};
 
 export const fetchProjectsByRobotId = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await Axios.get(`/api/projects/robot/${id}`);
+      dispatch(setProjects(data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const fetchProjectsUnrelatedToRobotId = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await Axios.get(`/api/projects/notrobot/${id}`);
       dispatch(setProjects(data));
     } catch (err) {
       console.log(err);

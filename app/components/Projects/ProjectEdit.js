@@ -17,6 +17,7 @@ export class ProjectEdit extends React.Component {
     };
     this.handleSave = this.handleSave.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleAdd
   }
 
   componentDidMount() {

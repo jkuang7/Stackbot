@@ -21,7 +21,7 @@ export class RobotEdit extends React.Component {
     };
     this.handleSave = this.handleSave.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleAddRobot = this.handleAddRobot.bind(this);
+    this.handleAddToRobot = this.handleAddToRobot.bind(this);
   }
 
   componentDidMount() {
@@ -74,7 +74,7 @@ export class RobotEdit extends React.Component {
     this.props.updateRobot(robot);
   }
 
-  handleAddRobot(event) {
+  handleAddToRobot(event) {
     event.preventDefault();
     const robotId = this.props.robot.id;
     const projectId = event.target.projects.value;
@@ -145,7 +145,7 @@ export class RobotEdit extends React.Component {
     unrelatedProjects = unrelatedProjects || [];
     return (
       <div>
-        <form onSubmit={this.handleAddRobot}>
+        <form onSubmit={this.handleAddToRobot}>
           <label htmlFor="projects"></label>
           <select name="projects" id="projects" onClick={this.handleSelect}>
             <option value="">Select Project...</option>

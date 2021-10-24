@@ -52,13 +52,6 @@ router.get("/robot/:id", async (req, res, next) => {
   }
 });
 
-router.get("/notrobot/:id", async (req, res, next) => {
-  try {
-  } catch (err) {
-    next(err);
-  }
-});
-
 router.post("/", async (req, res, next) => {
   try {
     const project = await Project.create(req.body);

@@ -40,9 +40,6 @@ router.get("/robot/:id", async (req, res, next) => {
           where: {
             id: robotProject.projectId,
           },
-          include: {
-            model: Robot,
-          },
         });
         return project;
       })

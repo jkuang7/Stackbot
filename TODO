@@ -9,7 +9,7 @@ Todo:
         - project.deadline
         - project.priority
         - Should also include unassign from robot (We can utilize ProjectCard for this)
-    ☐ Select Project... Should grab projects NOT tied to Robot.id and fill it with its respective
+    ✔ Select Project... Should grab projects NOT tied to Robot.id and fill it with its respective @started(21-10-24 01:19) @done(21-10-24 01:20) @lasted(1m34s)
       - Project Title
       - value: projectId
 

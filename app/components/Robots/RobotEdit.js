@@ -29,22 +29,26 @@ export class RobotEdit extends React.Component {
     this.props.fetchProjectsByRobotId(this.props.match.params.id);
   }
 
-
-
   async componentDidUpdate(prevProps) {
     if (this.props.robot !== prevProps.robot) {
       this.setState({
         robot: this.props.robot,
       });
+    }
 
-    const {data} = await Axios.get("/api/projects");
-    console.log(this.props.projects);
-    const arr = data.filter(project => {
-      
-      console.log(project);
-      return !this.props.projects.includes(project);
-    });
-    console.log(arr);
+    if (this.props.projects !== prevProps.projects) {
+      const { data } = await Axios.get("/api/projects");
+      const relatedProjects = this.props.projects;
+      const unrelatedProjects = data.filter((project) => {
+        let projectBool = true;
+        relatedProjects.forEach((p) => {
+          if (p.id === project.id) projectBool = false;
+        });
+        return projectBool;
+      });
+      this.setState({
+        projects: unrelatedProjects,
+      });
     }
   }
 
@@ -130,11 +134,12 @@ export class RobotEdit extends React.Component {
   }
 
   handleSelect() {
-    this.props.fetchProjects();
+
   }
 
   selectProject() {
-    const { projects } = this.props;
+    let { projects } = this.state;
+    projects = projects || [];
     return (
       <div>
         <form onSubmit={this.handleAddRobot}>
@@ -181,6 +186,7 @@ export class RobotEdit extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <Navbar />

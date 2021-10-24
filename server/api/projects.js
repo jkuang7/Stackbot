@@ -34,7 +34,6 @@ router.get("/robot/:id", async (req, res, next) => {
       },
     });
 
-    console.log(robotProjects);
 
     const projects = await Promise.all(
       robotProjects.map(async (robotProject) => {

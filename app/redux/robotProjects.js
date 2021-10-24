@@ -15,11 +15,17 @@ export const setRobotProject = (robotProject) => {
 export const addRobotProject = (robotId, projectId) => {
   return async (dispatch) => {
     try {
-      const { data } = Axios.post(`/api/robotprojects/`, {
+      Axios.post(`/api/robotprojects/`, {
         robotId,
         projectId,
       });
-      dispatch(setRobotProject(data));
+
+      dispatch(
+        setRobotProject({
+          robotId,
+          projectId,
+        })
+      );
     } catch (err) {
       console.log(err);
     }

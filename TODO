@@ -17,7 +17,7 @@ Todo:
       - Search for all projects not in the array
       - Thunk Creator that searches for all projects not related to robot
 
-    ☐ Add To Robot should Grab the currently selected Project and put /api/robotprojects/ with robotId and projectId
+    ✔ Add To Robot should Grab the currently selected Project and put /api/robotprojects/ with robotId and projectId @done(21-10-24 02:01)
       - It should update the ProjectRows View
         
   ☐ Edit Project Requires full view -> Edit Project with no Robots

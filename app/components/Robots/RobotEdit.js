@@ -36,6 +36,10 @@ export class RobotEdit extends React.Component {
       });
     }
 
+    if (this.props.robotProject !== prevProps.robotProject) {
+      this.props.fetchProjectsByRobotId(this.props.match.params.id);
+    }
+
     //Select Project... -> Returns Unrelated Projects to RobotId
     //i.e. All projects - Related Projects = Unrelated Projects
     if (this.props.projects !== prevProps.projects) {
@@ -48,13 +52,10 @@ export class RobotEdit extends React.Component {
         });
         return projectBool;
       });
-      this.setState({
-        projects: unrelatedProjects,
-      });
-    }
 
-    if (this.props.robotProject !== prevProps.robotProject) {
-      this.props.fetchProjectsByRobotId(this.props.match.params.id);
+      this.setState({
+        unrelatedProjects
+      });
     }
   }
 
@@ -140,15 +141,15 @@ export class RobotEdit extends React.Component {
   }
 
   selectProject() {
-    let { projects } = this.state;
-    projects = projects || [];
+    let { unrelatedProjects } = this.state;
+    unrelatedProjects = unrelatedProjects || [];
     return (
       <div>
         <form onSubmit={this.handleAddRobot}>
           <label htmlFor="projects"></label>
           <select name="projects" id="projects" onClick={this.handleSelect}>
             <option value="">Select Project...</option>
-            {projects.map((project) => {
+            {unrelatedProjects.map((project) => {
               return (
                 <option key={project.id} value={project.id}>
                   {project.title}
@@ -188,7 +189,6 @@ export class RobotEdit extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <Navbar />

@@ -15,7 +15,7 @@ export const setRobotProject = (robotProject) => {
 export const addRobotProject = (robotId, projectId) => {
   return async (dispatch) => {
     try {
-      Axios.post(`/api/robotprojects/`, {
+      await Axios.post(`/api/robotprojects/`, {
         robotId,
         projectId,
       });

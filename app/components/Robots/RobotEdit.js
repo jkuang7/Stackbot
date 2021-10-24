@@ -36,6 +36,8 @@ export class RobotEdit extends React.Component {
       });
     }
 
+    //Returns Unrelated Projects to RobotId
+    //i.e. All projects - Related Projects = Unrelated Projects
     if (this.props.projects !== prevProps.projects) {
       const { data } = await Axios.get("/api/projects");
       const relatedProjects = this.props.projects;
@@ -133,9 +135,7 @@ export class RobotEdit extends React.Component {
     );
   }
 
-  handleSelect() {
-
-  }
+  handleSelect() {}
 
   selectProject() {
     let { projects } = this.state;

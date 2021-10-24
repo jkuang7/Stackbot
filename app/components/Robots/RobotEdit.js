@@ -5,7 +5,7 @@ import { fetchRobot, updateRobot } from "../../redux/singleRobot";
 import { fetchProjectsByRobotId } from "../../redux/projects";
 import ProjectCard from "../Projects/ProjectCard";
 import { addRobotProject } from "../../redux/robotProjects";
-import { fetchProjects } from "../../redux/projects";
+import Axios from "axios";
 
 export class RobotEdit extends React.Component {
   constructor() {
@@ -22,7 +22,6 @@ export class RobotEdit extends React.Component {
     this.handleSave = this.handleSave.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleAddRobot = this.handleAddRobot.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
   }
 
   componentDidMount() {
@@ -30,11 +29,22 @@ export class RobotEdit extends React.Component {
     this.props.fetchProjectsByRobotId(this.props.match.params.id);
   }
 
-  componentDidUpdate(prevProps) {
+
+
+  async componentDidUpdate(prevProps) {
     if (this.props.robot !== prevProps.robot) {
       this.setState({
         robot: this.props.robot,
       });
+
+    const {data} = await Axios.get("/api/projects");
+    console.log(this.props.projects);
+    const arr = data.filter(project => {
+      
+      console.log(project);
+      return !this.props.projects.includes(project);
+    });
+    console.log(arr);
     }
   }
 
@@ -171,7 +181,6 @@ export class RobotEdit extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <Navbar />

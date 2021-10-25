@@ -147,7 +147,7 @@ export class RobotEdit extends React.Component {
       <div>
         <form onSubmit={this.handleAddToRobot}>
           <label htmlFor="projects"></label>
-          <select name="projects" id="projects" onClick={this.handleSelect}>
+          <select name="projects" id="projects" >
             <option value="">Select Project...</option>
             {unrelatedProjects.map((project) => {
               return (

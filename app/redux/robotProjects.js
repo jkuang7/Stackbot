@@ -1,12 +1,12 @@
 import Axios from "axios";
 
 //Action Types
-const REMOVE_ROBOT_PROJECT = "SET_ROBOT_PROJECT";
+const ROBOT_PROJECT = "SET_ROBOT_PROJECT";
 
 //Action Creators
 export const setRobotProject = (robotProject) => {
   return {
-    type: REMOVE_ROBOT_PROJECT,
+    type: ROBOT_PROJECT,
     robotProject,
   };
 };
@@ -47,7 +47,7 @@ export const deleteRobotProject = (robotId, projectId) => {
 
 export default function robotProjectReducer(state = {}, action) {
   switch (action.type) {
-    case REMOVE_ROBOT_PROJECT:
+    case ROBOT_PROJECT:
       return action.robotProject;
     default:
       return state;

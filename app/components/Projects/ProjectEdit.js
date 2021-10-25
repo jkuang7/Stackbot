@@ -2,6 +2,10 @@ import React from "react";
 import Navbar from "../Navbar";
 import { connect } from "react-redux";
 import { fetchProject, updateProject } from "../../redux/singleProject";
+import { fetchRobotsByProjectId } from "../../redux/robots";
+import RobotCard from "../Robots/RobotCard";
+import Axios from "axios";
+import { addRobotProject } from "../../redux/robotProjects";
 
 export class ProjectEdit extends React.Component {
   constructor() {
@@ -9,7 +13,7 @@ export class ProjectEdit extends React.Component {
     this.state = {
       project: {
         title: "",
-        deadline: '',
+        deadline: "",
         priority: 1,
         completed: false,
         description: "",
@@ -17,17 +21,38 @@ export class ProjectEdit extends React.Component {
     };
     this.handleSave = this.handleSave.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleAdd
+    this.handleAddToProject = this.handleAddToProject.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchProject(this.props.match.params.id);
+    this.props.fetchRobotsByProjectId(this.props.match.params.id);
   }
 
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps) {
     if (this.props.project !== prevProps.project) {
       this.setState({
         project: this.props.project,
+      });
+    }
+
+    if (this.props.robotProject !== prevProps.robotProject) {
+      this.props.fetchRobotsByProjectId(this.props.match.params.id);
+    }
+
+    if (this.props.robots !== prevProps.robots) {
+      const { data } = await Axios.get("/api/robots");
+      const relatedRobots = this.props.robots;
+      const unrelatedRobots = data.filter((robot) => {
+        let robotBool = true;
+        relatedRobots.forEach((r) => {
+          if (r.id === robot.id) robotBool = false;
+        });
+        return robotBool;
+      });
+
+      this.setState({
+        unrelatedRobots,
       });
     }
   }
@@ -47,15 +72,18 @@ export class ProjectEdit extends React.Component {
     this.props.updateProject(project);
   }
 
-  formatDate = (date) => {
-    const dateArr = date.split('-');
-    dateArr.push(dateArr.shift());
-    return dateArr.join('/');
-  };
+  handleAddToProject(event) {
+    event.preventDefault();
+    const projectId = this.props.project.id;
+    const robotId = event.target.robots.value;
+    this.props.addRobotProject(robotId, projectId);
+  }
 
-  // formatComplete = (completed) => {
-  //   return completed ? 'yes' : 'no'
-  // }
+  formatDate = (date) => {
+    const dateArr = date.split("-");
+    dateArr.push(dateArr.shift());
+    return dateArr.join("/");
+  };
 
   projectForm() {
     let { project } = this.state;
@@ -80,7 +108,7 @@ export class ProjectEdit extends React.Component {
             type="text"
             id="deadline"
             name="deadline"
-            value={this.formatDate(project.deadline)} 
+            value={this.formatDate(project.deadline)}
             onChange={this.handleChange}
           ></input>
         </label>
@@ -115,12 +143,60 @@ export class ProjectEdit extends React.Component {
     );
   }
 
+  selectRobot() {
+    let { unrelatedRobots } = this.state;
+    unrelatedRobots = unrelatedRobots || [];
+
+    return (
+      <div>
+        <form onSubmit={this.handleAddToProject}>
+          <label htmlFor="projects"></label>
+          <select name="robots" id="robots">
+            <option value="">Select Project...</option>
+            {unrelatedRobots.map((robot) => {
+              return (
+                <option key={robot.id} value={robot.id}>
+                  {robot.name}
+                </option>
+              );
+            })}
+          </select>
+          <input type="submit" value="Add to Project"></input>
+        </form>
+      </div>
+    );
+  }
+
+  robotRows() {
+    let { robots } = this.props;
+    return (
+      <div>
+        {robots.map((robot) => {
+          return <RobotCard key={robot.id} robot={robot} xBoolBtn={false} />;
+        })}
+      </div>
+    );
+  }
+
+  assignedRobots() {
+    let { project } = this.state;
+    return (
+      <div>
+        <h3>Robots Assigned to {project.name}</h3>
+        <div className="flex-row centerflex">{this.selectRobot()}</div>
+        {this.robotRows()}
+      </div>
+    );
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div>
         <Navbar />
         <h1>Edit Project</h1>
         {this.projectForm()}
+        {this.assignedRobots()}
       </div>
     );
   }
@@ -128,7 +204,9 @@ export class ProjectEdit extends React.Component {
 
 const mapState = (state) => {
   return {
-    project: state.project
+    project: state.project,
+    robots: state.robots,
+    robotProject: state.robotProject
   };
 };
 
@@ -136,6 +214,8 @@ const mapDispatch = (dispatch, { history }) => {
   return {
     fetchProject: (id) => dispatch(fetchProject(id)),
     updateProject: (project) => dispatch(updateProject(project, history)),
+    fetchRobotsByProjectId: (id) => dispatch(fetchRobotsByProjectId(id)),
+    addRobotProject: (robotId, projectId) => dispatch(addRobotProject(robotId, projectId))
   };
 };
 

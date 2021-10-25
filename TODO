@@ -30,16 +30,16 @@ Todo:
     - value: robotId
   ✔ Add To Project should Grab the currently selected Robot and apply a put route on /api/robotprojects/ with robotId and projectId @done(21-10-25 08:00)
     - It should update the ProjectRows View
-☐ Ensure full functionality and Refactor Code
+✔ Ensure full functionality and Refactor Code @started(21-10-25 08:07) @done(21-10-25 08:07) @lasted(8s)
   
 
 ☐ Sunday
   - Minor Changes
     ✔ Robot Listing Blank Slate @done(21-10-22 17:23)
     ✔ Project Listing Blank Slate @done(21-10-22 17:23)
-    ☐ Verify Rubric, Plan Content, and Upload Video
     ☐ Update Form Features
     ☐ Edit Form With No Errors?
+    ☐ Verify Rubric, Plan Content, and Upload Video
 
     ☐ BEM + SASS -- update CSS Architecture -- to improve project?
     ☐ Extra Credit (If Time Permits)

@@ -17,6 +17,8 @@ export class ProjectForm extends React.Component {
     const title = event.target.projectName.value;
     this.props.createProject({
       title,
+      deadline: Date.now(),
+      priority: 1,
     });
     event.target.projectName.value = "";
   }

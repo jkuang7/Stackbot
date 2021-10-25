@@ -1,5 +1,5 @@
 import Axios from "axios";
-import fetchRobots from "./robots"
+import fetchRobots from "./robots";
 
 //Action Types
 const SET_ROBOT = "SET_ROBOT";
@@ -63,6 +63,7 @@ export const updateRobot = (robot, history) => {
     try {
       const { data } = await Axios.put(`/api/robots/${robot.id}`, robot);
       dispatch(setRobot(robot));
+      history.push(`/robots/${robot.id}`);
     } catch (err) {
       console.log(err);
     }
@@ -74,8 +75,8 @@ export const deleteAssignedRobot = (id) => {
     await Axios.delete(`/api/robotprojects/robots/${id}`);
     const { data } = await Axios.get(`/api/robots/${id}`);
     dispatch(setRobot(data));
-  }
-}
+  };
+};
 
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers

@@ -15,7 +15,7 @@ export class AllProjects extends React.Component {
 
   navProjectForm() {
     return (
-      <div className="flex-row">
+      <div className="flex-row space-between">
         <h1>All Projects</h1>
         <Link to="/projects/add">
           <button type="button">Add Project</button>

@@ -15,7 +15,7 @@ export class AllRobots extends React.Component {
 
   navRobotForm() {
     return (
-      <div className="flex-row">
+      <div className="flex-row space-between">
         <h1>All Robots</h1>
         <Link to="/robots/add">
           <button type="button">Add Robot</button>

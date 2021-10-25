@@ -54,7 +54,7 @@ export class RobotEdit extends React.Component {
       });
 
       this.setState({
-        unrelatedProjects
+        unrelatedProjects,
       });
     }
   }
@@ -147,7 +147,7 @@ export class RobotEdit extends React.Component {
       <div>
         <form onSubmit={this.handleAddToRobot}>
           <label htmlFor="projects"></label>
-          <select name="projects" id="projects" >
+          <select name="projects" id="projects">
             <option value="">Select Project...</option>
             {unrelatedProjects.map((project) => {
               return (
@@ -165,7 +165,7 @@ export class RobotEdit extends React.Component {
 
   projectRows() {
     let { projects } = this.props;
-    return (
+    return projects.length !== 0 ? (
       <div>
         {projects.map((project) => {
           return (
@@ -173,6 +173,8 @@ export class RobotEdit extends React.Component {
           );
         })}
       </div>
+    ) : (
+      <p>There are no projects currently assigned to this robot.</p>
     );
   }
 

@@ -169,12 +169,14 @@ export class ProjectEdit extends React.Component {
 
   robotRows() {
     let { robots } = this.props;
-    return (
+    return robots.length !== 0 ? (
       <div>
         {robots.map((robot) => {
           return <RobotCard key={robot.id} robot={robot} xBoolBtn={false} />;
         })}
       </div>
+    ) : (
+      <p>There are no robots currently assigned to this project.</p>
     );
   }
 
@@ -183,7 +185,7 @@ export class ProjectEdit extends React.Component {
     return (
       <div>
         <h3>Robots Assigned to {project.title}</h3>
-        <div className="flex-row centerflex">{this.selectRobot()}</div>
+        <div>{this.selectRobot()}</div>
         {this.robotRows()}
       </div>
     );

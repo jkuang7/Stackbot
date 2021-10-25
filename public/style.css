@@ -66,8 +66,6 @@ img {
   flex-direction: column;
 }
 
-
-
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -78,6 +76,14 @@ img {
 
 .centerFlex {
   justify-content: center;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.space-between {
+  justify-content: space-between;
 }
 
 .robots,
@@ -128,6 +134,3 @@ img {
   flex: 0 1 45%;
 }
 
-.space-between {
-  justify-content: space-around;
-}

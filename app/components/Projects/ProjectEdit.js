@@ -152,7 +152,7 @@ export class ProjectEdit extends React.Component {
         <form onSubmit={this.handleAddToProject}>
           <label htmlFor="projects"></label>
           <select name="robots" id="robots">
-            <option value="">Select Project...</option>
+            <option value="">Select Robot...</option>
             {unrelatedRobots.map((robot) => {
               return (
                 <option key={robot.id} value={robot.id}>

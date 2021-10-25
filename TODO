@@ -20,15 +20,15 @@ Todo:
     ✔ Add To Robot should Grab the currently selected Project and put /api/robotprojects/ with robotId and projectId @done(21-10-24 02:01)
       - It should update the ProjectRows View
         
-  ☐ Edit Project Requires full view -> Edit Project with no Robots
-    ☐ RobotRows View
+  ✔ Edit Project Requires full view -> Edit Project with no Robots @started(21-10-25 07:59) @done(21-10-25 07:59) @lasted(12s)
+    ✔ RobotRows View @done(21-10-25 07:59)
     - Should grab projects tied to Project.id and fill it with the respective robots formatted with...
       - robot.imageUrl {robot.name}
       - unassign from project btn (Utilize RobotCard for this)
-  ☐ Select Robot... Should grab robots tied to project.id and fill it with its respective
+  ✔ Select Robot... Should grab robots tied to project.id and fill it with its respective @done(21-10-25 08:00)
     - Robot Title
     - value: robotId
-  ☐ Add To Project should Grab the currently selected Robot and apply a put route on /api/robotprojects/ with robotId and projectId
+  ✔ Add To Project should Grab the currently selected Robot and apply a put route on /api/robotprojects/ with robotId and projectId @done(21-10-25 08:00)
     - It should update the ProjectRows View
 ☐ Ensure full functionality and Refactor Code
   

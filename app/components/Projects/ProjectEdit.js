@@ -182,7 +182,7 @@ export class ProjectEdit extends React.Component {
     let { project } = this.state;
     return (
       <div>
-        <h3>Robots Assigned to {project.name}</h3>
+        <h3>Robots Assigned to {project.title}</h3>
         <div className="flex-row centerflex">{this.selectRobot()}</div>
         {this.robotRows()}
       </div>
@@ -190,7 +190,6 @@ export class ProjectEdit extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <Navbar />
@@ -206,7 +205,7 @@ const mapState = (state) => {
   return {
     project: state.project,
     robots: state.robots,
-    robotProject: state.robotProject
+    robotProject: state.robotProject,
   };
 };
 
@@ -215,7 +214,8 @@ const mapDispatch = (dispatch, { history }) => {
     fetchProject: (id) => dispatch(fetchProject(id)),
     updateProject: (project) => dispatch(updateProject(project, history)),
     fetchRobotsByProjectId: (id) => dispatch(fetchRobotsByProjectId(id)),
-    addRobotProject: (robotId, projectId) => dispatch(addRobotProject(robotId, projectId))
+    addRobotProject: (robotId, projectId) =>
+      dispatch(addRobotProject(robotId, projectId)),
   };
 };
 

@@ -14,7 +14,7 @@ body {
   text-align: center;
 }
 
-nav {
+.nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -34,7 +34,7 @@ nav {
   background-color: #333333;
 }
 
-.rightNav__link {
+.nav__item {
   margin: 0.5em;
 }
 

@@ -20,16 +20,15 @@ body {
   align-items: $align;
 }
 
-nav {
+.nav {
   @include flex(row, space-between, center);
   height: 1.5rem;
   padding: 1.2em;
   margin-bottom: 1em;
   background-color: #333333;
-}
-
-.rightNav__link {
-  margin: 0.5em;
+  &__item {
+    margin: 0.5em;
+  }
 }
 
 a:visited {

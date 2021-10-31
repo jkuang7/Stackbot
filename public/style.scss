@@ -1,0 +1,135 @@
+/*
+ * Hi! I'm your stylesheet! I've got some sensible defaults here,
+ * but feel free to change me to your heart's content!
+ */
+
+ * {
+  box-sizing: border-box;
+  font-family: arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(#c0c0c0);
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+nav {
+  align-items: center;
+  background-color: #333333;
+  color: #c0c0c0;
+  display: flex;
+  height: 40px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.rightNav__link {
+  margin: 0.5em;
+}
+
+a:visited {
+  text-decoration: none;
+  color: orange;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1.15rem;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+img {
+  object-fit: cover;
+  width: 25%;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.centerFlex {
+  justify-content: center;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.robots,
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.robotCard {
+  display: flex;
+  justify-content: space-between;
+  flex: 0 1 45%;
+  border: solid #5b6dcd 3px;
+  padding: 1.25rem;
+}
+
+.robotCard__img {
+  flex: 0 1 30%;
+}
+.robotCard__text {
+  flex: 0 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  border: solid #5b6dcd 3px;
+  padding: 1.25rem;
+}
+
+.projectCard--description {
+  display: flex;
+  justify-content: space-between;
+  border: solid #5b6dcd 3px;
+  padding: 1.25rem;
+}
+
+.bigCard {
+  margin: 1rem 5rem 2rem 5rem;
+}
+
+.smallerDiv {
+  flex: 0 1 45%;
+}

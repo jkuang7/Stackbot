@@ -14,13 +14,17 @@ class SingleRobot extends React.Component {
 
   robotCardImage(robot) {
     return (
-      <img className="robotCard__img" src={robot.imageUrl} alt="IMAGE"></img>
+      <img
+        className="modelContainer__img"
+        src={robot.imageUrl}
+        alt="IMAGE"
+      ></img>
     );
   }
 
   robotCardText(robot) {
     return (
-      <div className="robotCard__text">
+      <div className="modelContainer__robotText">
         <h1>{robot.name}</h1>
         <p>{`Fuel Type: ${robot.fuelType}`}</p>
         <p>{`Fuel Level: ${robot.fuelLevel}`}</p>
@@ -34,7 +38,7 @@ class SingleRobot extends React.Component {
 
   robotCard(robot) {
     return (
-      <div className="robotCard">
+      <div className="modelContainer__card">
         {this.robotCardImage(robot)}
         {this.robotCardText(robot)}
       </div>
@@ -45,10 +49,10 @@ class SingleRobot extends React.Component {
     let { projects } = this.props;
     projects = projects || [];
     return projects.length !== 0 ? (
-      <div className="flex-container">
+      <div>
         {projects.map((project) => {
           return (
-            <div className="smallerDiv" key={project.id}>
+            <div className="modelContainer--smallerDiv" key={project.id}>
               <ProjectCard project={project} xBtnBool={false} />
             </div>
           );
@@ -65,7 +69,7 @@ class SingleRobot extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className="bigCard">{this.robotCard(robot)}</div>
+        <div className="modelContainer--bigCard">{this.robotCard(robot)}</div>
         <h2>Projects assigned to {robot.name}</h2>
         {this.allAssignedProjectCards()}
       </div>

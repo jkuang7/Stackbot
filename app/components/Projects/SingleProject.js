@@ -14,7 +14,10 @@ class SingleProject extends React.Component {
   }
 
   handleComplete(event) {
-    this.props.toggleComplete(event.target.value, !this.props.project.completed);
+    this.props.toggleComplete(
+      event.target.value,
+      !this.props.project.completed
+    );
   }
 
   componentDidMount() {
@@ -23,12 +26,12 @@ class SingleProject extends React.Component {
   }
 
   projectCardDescription(project) {
-    return <p className="centerFlex">{project.description}</p>;
+    return <p>{project.description}</p>;
   }
 
   projectCardText(project) {
     return (
-      <div className="projectCard__text">
+      <div className="">
         <h1>{project.title}</h1>
         <p>{`Deadline: ${project.deadline}`}</p>
         <p>{`Completed: ${project.completed}`}</p>
@@ -51,7 +54,7 @@ class SingleProject extends React.Component {
 
   projectCard(project) {
     return (
-      <div className="projectCard--description">
+      <div className="modelContainer__card">
         {this.projectCardDescription(project)}
         {this.projectCardText(project)}
       </div>
@@ -65,7 +68,7 @@ class SingleProject extends React.Component {
       <div className="flex-container">
         {robots.map((robot) => {
           return (
-            <div className="smallerDiv" key={robot.id}>
+            <div className="modelContainer--smallerDiv" key={robot.id}>
               <RobotCard robot={robot} xBtnBool={false} />
             </div>
           );
@@ -82,7 +85,9 @@ class SingleProject extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className="bigCard">{this.projectCard(project)}</div>
+        <div className="modelContainer__bigCard">
+          {this.projectCard(project)}
+        </div>
         <h2>Robots assigned to this project</h2>
         {this.allAssignedRobotCards()}
       </div>
@@ -101,7 +106,7 @@ const mapDispatch = (dispatch) => {
   return {
     fetchProject: (id) => dispatch(fetchProject(id)),
     fetchRobotsByProjectId: (id) => dispatch(fetchRobotsByProjectId(id)),
-    toggleComplete: (id, completed) => dispatch(toggleComplete(id, completed))
+    toggleComplete: (id, completed) => dispatch(toggleComplete(id, completed)),
   };
 };
 

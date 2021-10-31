@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <div>
       <Navbar />
-      <main>
+      <main className="main">
         <h1>
           Welcome to StackBot Project Management: your robot employees are
           awaiting assignments!

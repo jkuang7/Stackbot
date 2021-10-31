@@ -74,79 +74,25 @@ a:visited {
   &__robotText {
     @include flex(column, space-evenly);
     font-size: 1.1rem;
+    width: 50%;
   }
   &__projectText {
     @include flex(column, space-evenly);
     font-size: 1.1rem;
     width: 100%;
   }
+  &--bigCard {
+    margin: 1rem 5rem 2rem 5rem;
+  }
+  &--smallerDiv {
+    flex: 0 1 45%;
+  }
 }
 
-// main {
-//   align-items: center;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   margin: 1.15rem;
-// }
-
-// h1 {
-//   margin-top: 0;
-//   margin-bottom: 0.25em;
-// }
-
-// .flex-row {
-//   display: flex;
-//   flex-direction: row;
-// }
-
-// .flex-column {
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// .flex-container {
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-around;
-//   flex-wrap: wrap;
-//   gap: 10px;
-// }
-
-// .centerFlex {
-//   justify-content: center;
-// }
-
-// .space-around {
-//   justify-content: space-around;
-// }
-
-// .space-between {
-//   justify-content: space-between;
-// }
-
-// .robotCard__img {
-//   flex: 0 1 30%;
-// }
-
-// .projectCard {
-//   display: flex;
-//   flex-direction: column;
-//   border: solid #5b6dcd 3px;
-//   padding: 1.25rem;
-// }
-
-// .projectCard--description {
-//   display: flex;
-//   justify-content: space-between;
-//   border: solid #5b6dcd 3px;
-//   padding: 1.25rem;
-// }
-
-// .bigCard {
-//   margin: 1rem 5rem 2rem 5rem;
-// }
-
-// .smallerDiv {
-//   flex: 0 1 45%;
-// }
+.main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1.15rem;
+}

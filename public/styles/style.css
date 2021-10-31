@@ -4,24 +4,6 @@
   font-family: arial, sans-serif;
 }
 
-nav {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #333333;
-  color: #c0c0c0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 40px;
-  padding: 20px;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-bottom: 5px;
-}
-
 body {
   background: -webkit-gradient(linear, left top, left bottom, from(#c0c0c0));
   background: linear-gradient(#c0c0c0);
@@ -30,6 +12,26 @@ body {
   height: 100%;
   width: 100%;
   text-align: center;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 1.5rem;
+  padding: 1.2em;
+  margin-bottom: 1em;
+  background-color: #333333;
 }
 
 .rightNav__link {

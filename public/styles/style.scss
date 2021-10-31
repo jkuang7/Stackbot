@@ -3,8 +3,6 @@
   font-family: arial, sans-serif;
 }
 
-@import "./nav";
-
 body {
   background: linear-gradient(#c0c0c0);
   padding: 0;
@@ -12,6 +10,22 @@ body {
   height: 100%;
   width: 100%;
   text-align: center;
+}
+
+
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+nav {
+  @include flex(row, space-between, center);
+  height: 1.5rem;
+  padding: 1.2em;
+  margin-bottom: 1em;
+  background-color: #333333;
 }
 
 .rightNav__link {

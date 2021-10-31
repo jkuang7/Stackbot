@@ -122,4 +122,22 @@ a:visited {
           align-items: center;
   font-size: 1.1rem;
 }
+
+.modelContainer__projectText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.1rem;
+  width: 100%;
+}
 /*# sourceMappingURL=style.css.map */

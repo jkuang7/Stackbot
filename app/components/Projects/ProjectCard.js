@@ -52,7 +52,7 @@ class ProjectCard extends React.Component {
   projectCardText() {
     let { project } = this.props;
     return (
-      <div className="">
+      <div className="modelContainer__projectText">
         <Link to={`/projects/${project.id}`}>
           <h1>{project.title}</h1>
         </Link>
@@ -65,7 +65,7 @@ class ProjectCard extends React.Component {
   }
 
   render() {
-    return <div className="projectCard">{this.projectCardText()}</div>;
+    return <div className="modelContainer__card">{this.projectCardText()}</div>;
   }
 }
 

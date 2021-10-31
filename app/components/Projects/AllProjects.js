@@ -26,7 +26,7 @@ export class AllProjects extends React.Component {
 
   allProjects(projects) {
     return (
-      <div className="projects">
+      <div className="modelContainer">
         {projects.map((project) => {
           return (
             <ProjectCard key={project.id} project={project} xBtnBool={true} />

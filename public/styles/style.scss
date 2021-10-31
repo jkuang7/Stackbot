@@ -12,7 +12,7 @@ body {
   text-align: center;
 }
 
-@mixin flex($direction, $justify, $align) {
+@mixin flex($direction, $justify, $align: center) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
@@ -21,6 +21,11 @@ body {
 
 @mixin flex-align($align) {
   align-items: $align;
+}
+
+a:visited {
+  text-decoration: none;
+  color: orange;
 }
 
 .nav {
@@ -52,103 +57,91 @@ body {
   }
 }
 
-a:visited {
-  text-decoration: none;
-  color: orange;
-}
-
-main {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 1.15rem;
-}
-
-h1 {
-  margin-top: 0;
-  margin-bottom: 0.25em;
-}
-
-img {
-  object-fit: cover;
-  width: 25%;
-}
-
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.modelContainer {
+  @include flex(row, space-around);
   flex-wrap: wrap;
   gap: 10px;
+  &__card {
+    @include flex(row, space-between, center);
+    flex: 0 1 45%;
+    border: solid #5b6dcd 3px;
+    padding: 1em;
+  }
+  &__img {
+    width: 45%;
+    object-fit: cover;
+  }
+  &__robotText {
+    @include flex(column, space-evenly);
+    font-size: 1.1rem;
+  }
 }
 
-.centerFlex {
-  justify-content: center;
-}
+// main {
+//   align-items: center;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   margin: 1.15rem;
+// }
 
-.space-around {
-  justify-content: space-around;
-}
+// h1 {
+//   margin-top: 0;
+//   margin-bottom: 0.25em;
+// }
 
-.space-between {
-  justify-content: space-between;
-}
+// .flex-row {
+//   display: flex;
+//   flex-direction: row;
+// }
 
-.robots,
-.projects {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 10px;
-}
+// .flex-column {
+//   display: flex;
+//   flex-direction: column;
+// }
 
-.robotCard {
-  display: flex;
-  justify-content: space-between;
-  flex: 0 1 45%;
-  border: solid #5b6dcd 3px;
-  padding: 1.25rem;
-}
+// .flex-container {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-around;
+//   flex-wrap: wrap;
+//   gap: 10px;
+// }
 
-.robotCard__img {
-  flex: 0 1 30%;
-}
-.robotCard__text {
-  flex: 0 1 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
+// .centerFlex {
+//   justify-content: center;
+// }
 
-.projectCard {
-  display: flex;
-  flex-direction: column;
-  border: solid #5b6dcd 3px;
-  padding: 1.25rem;
-}
+// .space-around {
+//   justify-content: space-around;
+// }
 
-.projectCard--description {
-  display: flex;
-  justify-content: space-between;
-  border: solid #5b6dcd 3px;
-  padding: 1.25rem;
-}
+// .space-between {
+//   justify-content: space-between;
+// }
 
-.bigCard {
-  margin: 1rem 5rem 2rem 5rem;
-}
+// .robotCard__img {
+//   flex: 0 1 30%;
+// }
 
-.smallerDiv {
-  flex: 0 1 45%;
-}
+// .projectCard {
+//   display: flex;
+//   flex-direction: column;
+//   border: solid #5b6dcd 3px;
+//   padding: 1.25rem;
+// }
+
+// .projectCard--description {
+//   display: flex;
+//   justify-content: space-between;
+//   border: solid #5b6dcd 3px;
+//   padding: 1.25rem;
+// }
+
+// .bigCard {
+//   margin: 1rem 5rem 2rem 5rem;
+// }
+
+// .smallerDiv {
+//   flex: 0 1 45%;
+// }

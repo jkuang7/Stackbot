@@ -27,7 +27,7 @@ export class AllRobots extends React.Component {
   allRobots() {
     const { robots } = this.props;
     return (
-      <div className="robots">
+      <div className="modelContainer">
         {robots.map((robot) => {
           return <RobotCard key={robot.id} robot={robot} xBtnBool={true} />;
         })}

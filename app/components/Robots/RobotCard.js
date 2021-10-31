@@ -36,7 +36,7 @@ class RobotCard extends React.Component {
   robotCardImg() {
     const { robot } = this.props;
     return (
-      <img className="robotCard__img" src={robot.imageUrl} alt="IMAGE"></img>
+      <img className="modelContainer__img" src={robot.imageUrl} alt="IMAGE"></img>
     );
   }
 
@@ -58,7 +58,7 @@ class RobotCard extends React.Component {
   robotCardText() {
     let { robot } = this.props;
     return (
-      <div className="robotCard__text">
+      <div className="modelContainer__robotText">
         <Link to={`/robots/${robot.id}`}>
           <h1>{robot.name}</h1>
         </Link>
@@ -72,7 +72,7 @@ class RobotCard extends React.Component {
 
   render() {
     return (
-      <div className="robotCard">
+      <div className="modelContainer__card">
         {this.robotCardImg()}
         {this.robotCardText()}
       </div>

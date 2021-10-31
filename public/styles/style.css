@@ -28,14 +28,32 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.nav--navbar {
   height: 1.5rem;
   padding: 1.2em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
   background-color: #333333;
+}
+
+.nav--form {
+  margin-bottom: 0.25em;
 }
 
 .nav__item {
   margin: 0.5em;
+}
+
+.nav__item--btn {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 a:visited {

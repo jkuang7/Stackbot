@@ -15,10 +15,10 @@ export class AllRobots extends React.Component {
 
   navRobotForm() {
     return (
-      <div className="flex-row space-between">
-        <h1>All Robots</h1>
+      <div className="nav nav--form">
+        <h1 className="nav__item">All Robots</h1>
         <Link to="/robots/add">
-          <button type="button">Add Robot</button>
+          <button type="button" className="nav__item nav__item--btn">Add Robot</button>
         </Link>
       </div>
     );

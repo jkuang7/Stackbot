@@ -1,21 +1,7 @@
-/*
- * Hi! I'm your stylesheet! I've got some sensible defaults here,
- * but feel free to change me to your heart's content!
- */
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: arial, sans-serif;
-}
-
-body {
-  background: -webkit-gradient(linear, left top, left bottom, from(#c0c0c0));
-  background: linear-gradient(#c0c0c0);
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  text-align: center;
 }
 
 nav {
@@ -34,6 +20,16 @@ nav {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-bottom: 5px;
+}
+
+body {
+  background: -webkit-gradient(linear, left top, left bottom, from(#c0c0c0));
+  background: linear-gradient(#c0c0c0);
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
 }
 
 .rightNav__link {

@@ -38,7 +38,7 @@ class SingleRobot extends React.Component {
 
   robotCard(robot) {
     return (
-      <div className="modelContainer__card">
+      <div className="modelContainer__card modelContainer__card--small">
         {this.robotCardImage(robot)}
         {this.robotCardText(robot)}
       </div>
@@ -49,13 +49,9 @@ class SingleRobot extends React.Component {
     let { projects } = this.props;
     projects = projects || [];
     return projects.length !== 0 ? (
-      <div>
+      <div className="modelContainer">
         {projects.map((project) => {
-          return (
-            <div className="modelContainer--smallerDiv" key={project.id}>
-              <ProjectCard project={project} xBtnBool={false} />
-            </div>
-          );
+          return <ProjectCard project={project} xBtnBool={false} />;
         })}
       </div>
     ) : (
@@ -69,7 +65,7 @@ class SingleRobot extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className="modelContainer--bigCard">{this.robotCard(robot)}</div>
+        {this.robotCard(robot)}
         <h2>Projects assigned to {robot.name}</h2>
         {this.allAssignedProjectCards()}
       </div>

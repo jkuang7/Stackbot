@@ -54,7 +54,7 @@ class SingleProject extends React.Component {
 
   projectCard(project) {
     return (
-      <div className="modelContainer__card">
+      <div className="modelContainer__card modelContainer__card--small">
         {this.projectCardDescription(project)}
         {this.projectCardText(project)}
       </div>
@@ -65,13 +65,9 @@ class SingleProject extends React.Component {
     let { robots } = this.props;
     robots = robots || [];
     return robots.length !== 0 ? (
-      <div className="flex-container">
+      <div className="modelContainer">
         {robots.map((robot) => {
-          return (
-            <div className="modelContainer--smallerDiv" key={robot.id}>
-              <RobotCard robot={robot} xBtnBool={false} />
-            </div>
-          );
+          return <RobotCard key={robot.id} robot={robot} xBtnBool={false} />;
         })}
       </div>
     ) : (
@@ -85,9 +81,7 @@ class SingleProject extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className="modelContainer__bigCard">
-          {this.projectCard(project)}
-        </div>
+        {this.projectCard(project)}
         <h2>Robots assigned to this project</h2>
         {this.allAssignedRobotCards()}
       </div>

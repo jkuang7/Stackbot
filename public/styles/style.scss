@@ -63,10 +63,15 @@ a:visited {
   gap: 10px;
   &__card {
     @include flex(row, space-between, center);
-    flex: 0 1 45%;
+    flex: 0 1 35%;
     border: solid #5b6dcd 3px;
     padding: 1em;
+    &--small {
+      width: 50%;
+      margin: auto;
+    }
   }
+  
   &__img {
     width: 45%;
     object-fit: cover;
@@ -84,9 +89,7 @@ a:visited {
   &--bigCard {
     margin: 1rem 5rem 2rem 5rem;
   }
-  &--smallerDiv {
-    flex: 0 1 45%;
-  }
+  
 }
 
 .main {

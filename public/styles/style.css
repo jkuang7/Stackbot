@@ -94,10 +94,15 @@ a:visited {
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 45%;
-          flex: 0 1 45%;
+      -ms-flex: 0 1 35%;
+          flex: 0 1 35%;
   border: solid #5b6dcd 3px;
   padding: 1em;
+}
+
+.modelContainer__card--small {
+  width: 50%;
+  margin: auto;
 }
 
 .modelContainer__img {
@@ -144,12 +149,6 @@ a:visited {
 
 .modelContainer--bigCard {
   margin: 1rem 5rem 2rem 5rem;
-}
-
-.modelContainer--smallerDiv {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 45%;
-          flex: 0 1 45%;
 }
 
 .main {

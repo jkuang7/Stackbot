@@ -51,7 +51,7 @@ class SingleRobot extends React.Component {
     return projects.length !== 0 ? (
       <div className="modelContainer">
         {projects.map((project) => {
-          return <ProjectCard project={project} xBtnBool={false} />;
+          return <ProjectCard project={project} xBtnBool={false} key={project.id}/>;
         })}
       </div>
     ) : (

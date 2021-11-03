@@ -14,9 +14,8 @@ body {
   text-align: center;
 }
 
-a:visited {
-  text-decoration: none;
-  color: orange;
+a {
+  color: red;
 }
 
 .nav {
@@ -145,10 +144,6 @@ a:visited {
           align-items: center;
   font-size: 1.1rem;
   width: 100%;
-}
-
-.modelContainer--bigCard {
-  margin: 1rem 5rem 2rem 5rem;
 }
 
 .main {

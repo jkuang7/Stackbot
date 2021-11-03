@@ -12,7 +12,11 @@
     "start": "echo 'Running server for production - developers, use npm run start-dev for development' && node main",
     "seed": "node seed.js",
     "electron": "electron .",
-    "electron-dev": "concurrently \"npm run start-dev\" \"wait-on http://localhost:1337 && electron .\""
+    "electron-dev": "concurrently \"npm run start-dev\" \"wait-on http://localhost:1337 && electron .\"",
+
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds",
+    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32  --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"JPFP\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --prune=true --out=release-builds"
   },
   "keywords": [
     "react",
@@ -50,6 +54,7 @@
     "chai-enzyme": "^1.0.0-beta.1",
     "css-loader": "^2.1.1",
     "electron": "^15.3.0",
+    "electron-packager": "^15.4.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.9.1",
     "eslint": "^4.19.1",
